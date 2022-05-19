@@ -9,7 +9,8 @@ Dibujo::Dibujo(QWidget *parent)
 }
 
 void Dibujo::hacerLineas(){
-
+    QPainter painter(this );
+    painter.drawLine(10,10,100,100);
 }
 
 void Dibujo::cambiarEstado(){
@@ -17,13 +18,10 @@ void Dibujo::cambiarEstado(){
 
 }
 
-void Dibujo::paintEvent(QPaintEvent *event)
+/*void Dibujo::paintEvent(QPaintEvent *event)
 {
-    //if(!flag){
-    QPainter painter(this);
-    painter.setPen(QPen(Qt::black, 12, Qt::DashDotLine, Qt::RoundCap));
-    painter.drawLine(10, 10, 200, 200);
+    QPainter painter(this );
+    painter.drawLine(10,10,100,100);
 
 
-
-}
+}*/

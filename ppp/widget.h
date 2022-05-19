@@ -21,16 +21,30 @@ public:
 
 
 private slots:
-
     void on_cargarImagen_clicked();
-
     void on_lapizButton_clicked();
+    void on_grosorButton_clicked();
+     void on_colorBUtton_clicked();
 
 private:
-
     ImagenBitmap *ptrBitmap;
     Dibujo *ptrDibujar;
     bool dibujar;
+
+    //
+    QPainter *mPainter;
+    QImage *mImage;
+    QPoint mBegin;
+    QPoint mEnd;
+    bool mEnabled;
+    QColor mColor;
+    int mgrosor;
+
+protected:
+   void paintEvent(QPaintEvent *) override;
+   void mousePressEvent(QMouseEvent *e) override;
+   void mouseMoveEvent(QMouseEvent *e) override;
+   void mouseReleaseEvent(QMouseEvent *e) override;
 
 };
 #endif // WIDGET_H

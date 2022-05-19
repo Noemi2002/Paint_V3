@@ -14,6 +14,11 @@ public:
     ImagenBitmap(Ui::Widget* ptr = nullptr);
     void mostrarImagen(QPixmap imagen);
 
+private slots:
+
+
+
+
 private:
     Ui::Widget *ptrVentana;
     ImagenBitmap *s;

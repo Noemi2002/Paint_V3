@@ -22,7 +22,7 @@ private:
     bool flag;
 
 protected:
-   void paintEvent(QPaintEvent *);
+   //void paintEvent(QPaintEvent *);
 };
 
 #endif // DIBUJO_H

@@ -23,3 +23,12 @@ void ImagenBitmap::mostrarImagen(QPixmap imagen)
     //ptrVentana->canva->setPixmap(scaledPixmap());
     //QLabel::setPixmap(scaledPixmap());
 }
+
+
+
+
+
+
+
+
+

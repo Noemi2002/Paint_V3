@@ -81,10 +81,10 @@
   <widget class="QLabel" name="canva">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>20</y>
-     <width>1021</width>
-     <height>551</height>
+     <x>940</x>
+     <y>450</y>
+     <width>261</width>
+     <height>121</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -107,6 +107,19 @@ background-color: white;
    </property>
    <property name="text">
     <string>Color</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="grosorButton">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>220</y>
+     <width>111</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Grosor</string>
    </property>
   </widget>
  </widget>
