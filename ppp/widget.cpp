@@ -27,13 +27,14 @@ Widget::Widget(QWidget *parent)
     ptrDibujar = new Dibujo(this);
     dibujar = false;
 
+
     mImage = new QImage(QApplication::desktop()->size(), QImage::Format_ARGB32_Premultiplied);
     mPainter = new QPainter(mImage);
     mEnabled = false;
     mColor = QColor(Qt::black);
     mgrosor = DEFAULT_SIZE;
 
-
+    borradorEnabled = false;
 }
 
 Widget::~Widget()
@@ -59,7 +60,7 @@ void Widget::on_cargarImagen_clicked()
 
 void Widget::on_lapizButton_clicked()
 {
-
+    mEnabled = true;
 
     //Dibujar rectángulo
     /*int h = ui->canva->height();
@@ -83,6 +84,7 @@ void Widget::paintEvent(QPaintEvent *event)
 void Widget::mousePressEvent(QMouseEvent *e)
 {
     mEnabled = true;
+    //borradorEnabled = true;
     mBegin = e->pos();
     e->accept(); //Hace que se termine de ejecutar, como que se cierre el método
 }
@@ -93,15 +95,30 @@ void Widget::mouseMoveEvent(QMouseEvent *e)
         e->accept();
         return;
     }
-    QPen pen(mColor);
-    pen.setCapStyle(Qt::RoundCap);
-    pen.setWidth(mgrosor);
-    mEnd = e->pos();
-    mPainter->setPen(pen);
-    mPainter->drawLine(mBegin, mEnd);
-    mBegin = mEnd;
-    update(); //Hace que se ejecute paintEvent
-    e->accept();
+    if(borradorEnabled){
+        QPen pen(Qt::white);
+        pen.setCapStyle(Qt::RoundCap);
+        pen.setWidth(mgrosor);
+        mEnd = e->pos();
+        mPainter->setPen(pen);
+        mPainter->drawLine(mBegin, mEnd);
+        mBegin = mEnd;
+        update(); //Hace que se ejecute paintEvent
+        e->accept();
+        //
+    }else{
+        QPen pen(mColor);
+        pen.setCapStyle(Qt::RoundCap);
+        pen.setWidth(mgrosor);
+        mEnd = e->pos();
+        mPainter->setPen(pen);
+        mPainter->drawLine(mBegin, mEnd);
+        mBegin = mEnd;
+        update(); //Hace que se ejecute paintEvent
+        e->accept();
+    }
+    borradorEnabled = false;
+
 }
 
 void Widget::mouseReleaseEvent(QMouseEvent *e)
@@ -118,5 +135,13 @@ void Widget::on_grosorButton_clicked()
 void Widget::on_colorBUtton_clicked()
 {
     mColor = QColorDialog::getColor(Qt::black, this, "Color de lápiz");
+}
+
+
+void Widget::on_borradorButton_clicked()
+{
+    borradorEnabled = true;
+
+    update();
 }
 

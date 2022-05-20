@@ -26,6 +26,8 @@ private slots:
     void on_grosorButton_clicked();
      void on_colorBUtton_clicked();
 
+     void on_borradorButton_clicked();
+
 private:
     ImagenBitmap *ptrBitmap;
     Dibujo *ptrDibujar;
@@ -39,6 +41,7 @@ private:
     bool mEnabled;
     QColor mColor;
     int mgrosor;
+    bool borradorEnabled;
 
 protected:
    void paintEvent(QPaintEvent *) override;
