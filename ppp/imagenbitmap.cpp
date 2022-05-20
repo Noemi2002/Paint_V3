@@ -27,8 +27,3 @@ void ImagenBitmap::mostrarImagen(QPixmap imagen)
 
 
 
-
-
-
-
-

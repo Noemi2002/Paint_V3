@@ -19,6 +19,8 @@ private slots:
 
 
 
+    void on_borradorButton_clicked();
+
 private:
     Ui::Widget *ptrVentana;
     ImagenBitmap *s;

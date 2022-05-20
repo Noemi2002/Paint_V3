@@ -28,6 +28,8 @@ private slots:
 
      void on_borradorButton_clicked();
 
+     void on_borradorButton_pressed();
+
 private:
     ImagenBitmap *ptrBitmap;
     Dibujo *ptrDibujar;
