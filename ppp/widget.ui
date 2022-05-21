@@ -78,24 +78,6 @@
     <string>Guardar</string>
    </property>
   </widget>
-  <widget class="QLabel" name="canva">
-   <property name="geometry">
-    <rect>
-     <x>940</x>
-     <y>450</y>
-     <width>261</width>
-     <height>121</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">#canva{
-background-color: white;
-}</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QPushButton" name="colorBUtton">
    <property name="geometry">
     <rect>
@@ -120,6 +102,16 @@ background-color: white;
    </property>
    <property name="text">
     <string>Grosor</string>
+   </property>
+  </widget>
+  <widget class="QGraphicsView" name="canva">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>40</y>
+     <width>1041</width>
+     <height>541</height>
+    </rect>
    </property>
   </widget>
  </widget>

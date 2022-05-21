@@ -3,8 +3,8 @@
 
 #include <QWidget>
 #include<dibujo.h>
+#include "image.h"
 
-class ImagenBitmap;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -28,10 +28,8 @@ private slots:
 
      void on_borradorButton_clicked();
 
-     void on_borradorButton_pressed();
-
 private:
-    ImagenBitmap *ptrBitmap;
+    Image *ptrBitmap;
     Dibujo *ptrDibujar;
     bool dibujar;
 

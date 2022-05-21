@@ -10,13 +10,13 @@ CONFIG += c++17
 
 SOURCES += \
     dibujo.cpp \
-    imagenbitmap.cpp \
+    image.cpp \
     main.cpp \
     widget.cpp
 
 HEADERS += \
     dibujo.h \
-    imagenbitmap.h \
+    image.h \
     widget.h
 
 FORMS += \

@@ -1,17 +1,17 @@
 #include "widget.h"
 #include "ui_widget.h"
 
-#include<QPixmap>
-#include"imagenbitmap.h"
-#include<QFileDialog>
+#include <QPixmap>
+#include "image.h"
+#include <QFileDialog>
 
-#include<QDesktopWidget>
-#include<QMouseEvent>
-#include<QPaintEvent>
-#include<QPainter>
-#include<QImage>
-#include<QInputDialog>
-#include<QColorDialog>
+#include <QDesktopWidget>
+#include <QMouseEvent>
+#include <QPaintEvent>
+#include <QPainter>
+#include <QImage>
+#include <QInputDialog>
+#include <QColorDialog>
 
 #define DEFAULT_SIZE 5
 
@@ -22,8 +22,8 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
-    Ui::Widget *imagen = this->ui;
-    ptrBitmap = new ImagenBitmap(imagen);
+    Ui::Widget *ptrVentana = this->ui;
+    ptrBitmap = new Image(this, ptrVentana);
     ptrDibujar = new Dibujo(this);
     dibujar = false;
 
@@ -50,7 +50,7 @@ void Widget::on_cargarImagen_clicked()
     QString s = QFileDialog::getOpenFileName(this, tr("Open File"),
                                                             ".",
                                                             tr("BMP image (*.bmp)"));
-    QPixmap bmpImagen;
+    QImage bmpImagen;
     bmpImagen.load(s);
     ptrBitmap->mostrarImagen(bmpImagen);
     //QPixmap image("/home/mimi/Descargas/redPanda.bmp");
