@@ -19,3 +19,9 @@ void Image::mostrarImagen(QImage imagePath)
   backGroung->setScene(scene);
   backGroung->show();
 }
+
+/*void Image::on_canva_rubberBandChanged(const QRect &viewportRect, const QPointF &fromScenePoint, const QPointF &toScenePoint)
+{
+
+}*/
+

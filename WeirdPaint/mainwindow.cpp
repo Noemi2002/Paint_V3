@@ -1,8 +1,7 @@
-#include "widget.h"
-#include "ui_widget.h"
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
 
 #include <QPixmap>
-#include "image.h"
 #include <QFileDialog>
 
 #include <QDesktopWidget>
@@ -13,23 +12,16 @@
 #include <QInputDialog>
 #include <QColorDialog>
 
+#include <QString>
+#include <QByteArray>
+
 #define DEFAULT_SIZE 5
 
-
-
-Widget::Widget(QWidget *parent)
-    : QWidget(parent)
-    , ui(new Ui::Widget)
-    , canva(new Canva(this))
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-            //setCentralWidget(canva);
-    Ui::Widget *ptrVentana = this->ui;
-    ptrBitmap = new Image(this, ptrVentana);
-    dibujar = false;
-
-
     mImage = new QImage(QApplication::desktop()->size(), QImage::Format_ARGB32_Premultiplied);
     mPainter = new QPainter(mImage);
     mEnabled = false;
@@ -37,9 +29,11 @@ Widget::Widget(QWidget *parent)
     mgrosor = DEFAULT_SIZE;
 
     borradorEnabled = false;
+
+    ptrCanva = new Canva(this);
 }
 
-Widget::~Widget()
+MainWindow::~MainWindow()
 {
     delete ui;
     delete mPainter;
@@ -47,34 +41,24 @@ Widget::~Widget()
 
 }
 
-void Widget::on_cargarImagen_clicked()
-{
-    QString s = QFileDialog::getOpenFileName(this, tr("Open File"),
-                                                            ".",
-                                                            tr("BMP image (*.bmp)"));
-    QImage bmpImagen;
-    bmpImagen.load(s);
-    ptrBitmap->mostrarImagen(bmpImagen);
-    //QPixmap image("/home/mimi/Descargas/redPanda.bmp");
-
-}
 
 
-void Widget::on_lapizButton_clicked()
+void MainWindow::on_actionL_piz_triggered()
 {
     borradorEnabled = false;
 }
 
-void Widget::paintEvent(QPaintEvent *event)
+void MainWindow::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
+    painter.fillRect(mImage->rect(), Qt::white);
     //QPainter painter( );
     painter.drawImage(0, 0, *mImage);
     event->accept();
 
 }
 
-void Widget::mousePressEvent(QMouseEvent *e)
+void MainWindow::mousePressEvent(QMouseEvent *e)
 {
     mEnabled = true;
     //borradorEnabled= true;
@@ -82,7 +66,7 @@ void Widget::mousePressEvent(QMouseEvent *e)
     e->accept(); //Hace que se termine de ejecutar, como que se cierre el método
 }
 
-void Widget::mouseMoveEvent(QMouseEvent *e)
+void MainWindow::mouseMoveEvent(QMouseEvent *e)
 {
     if(!mEnabled){
         e->accept();
@@ -122,23 +106,25 @@ void Widget::mouseMoveEvent(QMouseEvent *e)
 
 }
 
-void Widget::mouseReleaseEvent(QMouseEvent *e)
+void MainWindow::mouseReleaseEvent(QMouseEvent *e)
 {
     mEnabled = false;
     e->accept();
 }
 
-void Widget::on_grosorButton_clicked()
+void MainWindow::on_actionGrosor_triggered()
 {
     mgrosor = QInputDialog::getInt(this, "Tamaño de lápiz", "Ingrese el tamaño: ", 5, 1);
 }
 
-void Widget::on_colorBUtton_clicked()
+void MainWindow::on_actionColor_triggered()
 {
     mColor = QColorDialog::getColor(Qt::black, this, "Color de lápiz");
 }
 
-void Widget::on_borradorButton_clicked()
+
+
+void MainWindow::on_actionBorrador_triggered()
 {
     borradorEnabled = true;
     mEnabled = false;
@@ -147,4 +133,30 @@ void Widget::on_borradorButton_clicked()
 }
 
 
+bool MainWindow::on_actionGuardar_Imagen_triggered()
+{
+    QByteArray formatoImage = "bmp";
+    QString initialPath = QDir::currentPath() + "/untitled." + formatoImage;
+
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),
+                               initialPath,
+                               tr("%1 Files (*.%2);;All Files (*)")
+                               .arg(QString::fromLatin1(formatoImage.toUpper()))
+                               .arg(QString::fromLatin1(formatoImage)));
+    if (fileName.isEmpty())
+        return false;
+    return guardarImagen(fileName, formatoImage.constData());
+}
+
+bool MainWindow::guardarImagen(const QString &fileName, const char *fileFormat)
+{
+    QImage visibleImage = *mImage;
+    //resizeImage(&visibleImage, size());
+
+    if (visibleImage.save(fileName, fileFormat)) {
+        //modified = false;
+        return true;
+    }
+    return false;
+}
 

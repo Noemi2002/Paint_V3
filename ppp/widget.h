@@ -2,7 +2,7 @@
 #define WIDGET_H
 
 #include <QWidget>
-#include<dibujo.h>
+#include "canva.h"
 #include "image.h"
 
 
@@ -30,7 +30,6 @@ private slots:
 
 private:
     Image *ptrBitmap;
-    Dibujo *ptrDibujar;
     bool dibujar;
 
     //
@@ -42,6 +41,9 @@ private:
     QColor mColor;
     int mgrosor;
     bool borradorEnabled;
+
+    //
+    Canva *canva;
 
 protected:
    void paintEvent(QPaintEvent *) override;

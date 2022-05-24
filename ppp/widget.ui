@@ -107,8 +107,8 @@
   <widget class="QGraphicsView" name="canva">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>40</y>
+     <x>200</x>
+     <y>30</y>
      <width>1041</width>
      <height>541</height>
     </rect>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuArchivo">
+    <property name="title">
+     <string>Archivo</string>
+    </property>
+    <addaction name="actionNuevo"/>
+    <addaction name="actionCargar_Imagen"/>
+    <addaction name="actionGuardar_Imagen"/>
+   </widget>
+   <widget class="QMenu" name="menuCartuchera">
+    <property name="title">
+     <string>Cartuchera</string>
+    </property>
+    <addaction name="actionL_piz"/>
+    <addaction name="actionLapicero"/>
+    <addaction name="actionBorrador"/>
+   </widget>
+   <widget class="QMenu" name="menuCaracter_sticas">
+    <property name="title">
+     <string>Características</string>
+    </property>
+    <addaction name="actionGrosor"/>
+    <addaction name="actionColor"/>
+   </widget>
+   <widget class="QMenu" name="menuFiguras">
+    <property name="title">
+     <string>Figuras</string>
+    </property>
+    <addaction name="actionRect_ngulo"/>
+    <addaction name="actionTri_ngulo"/>
+    <addaction name="actionC_rculo"/>
+   </widget>
+   <widget class="QMenu" name="menuPintar">
+    <property name="title">
+     <string>Pintar</string>
+    </property>
+    <addaction name="actionFill"/>
+    <addaction name="actionColorPicker"/>
+   </widget>
+   <widget class="QMenu" name="menuFiltros">
+    <property name="title">
+     <string>Filtros</string>
+    </property>
+    <addaction name="actionBlanco_y_negro"/>
+    <addaction name="actionNegativo"/>
+   </widget>
+   <widget class="QMenu" name="menuUndo">
+    <property name="title">
+     <string>Undo</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuRedo">
+    <property name="title">
+     <string>Redo</string>
+    </property>
+   </widget>
+   <addaction name="menuArchivo"/>
+   <addaction name="menuCartuchera"/>
+   <addaction name="menuCaracter_sticas"/>
+   <addaction name="menuFiguras"/>
+   <addaction name="menuPintar"/>
+   <addaction name="menuFiltros"/>
+   <addaction name="menuUndo"/>
+   <addaction name="menuRedo"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionCargar_Imagen">
+   <property name="text">
+    <string>Cargar Imagen</string>
+   </property>
+  </action>
+  <action name="actionGuardar_Imagen">
+   <property name="text">
+    <string>Guardar Imagen</string>
+   </property>
+  </action>
+  <action name="actionL_piz">
+   <property name="text">
+    <string>Lápiz</string>
+   </property>
+  </action>
+  <action name="actionLapicero">
+   <property name="text">
+    <string>Lapicero</string>
+   </property>
+  </action>
+  <action name="actionBorrador">
+   <property name="text">
+    <string>Borrador</string>
+   </property>
+  </action>
+  <action name="actionGrosor">
+   <property name="text">
+    <string>Grosor</string>
+   </property>
+  </action>
+  <action name="actionColor">
+   <property name="text">
+    <string>Color</string>
+   </property>
+  </action>
+  <action name="actionRect_ngulo">
+   <property name="text">
+    <string>Rectángulo</string>
+   </property>
+  </action>
+  <action name="actionTri_ngulo">
+   <property name="text">
+    <string>Triángulo</string>
+   </property>
+  </action>
+  <action name="actionC_rculo">
+   <property name="text">
+    <string>Círculo</string>
+   </property>
+  </action>
+  <action name="actionFill">
+   <property name="text">
+    <string>Fill</string>
+   </property>
+  </action>
+  <action name="actionColorPicker">
+   <property name="text">
+    <string>ColorPicker</string>
+   </property>
+  </action>
+  <action name="actionBlanco_y_negro">
+   <property name="text">
+    <string>Blanco y negro</string>
+   </property>
+  </action>
+  <action name="actionNegativo">
+   <property name="text">
+    <string>Negativo</string>
+   </property>
+  </action>
+  <action name="actionNuevo">
+   <property name="text">
+    <string>Nuevo</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

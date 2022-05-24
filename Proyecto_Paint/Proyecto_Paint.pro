@@ -10,19 +10,15 @@ CONFIG += c++17
 
 SOURCES += \
     canva.cpp \
-    image.cpp \
     main.cpp \
-    mainwindow.cpp \
-    widget.cpp
+    mainwindow.cpp
 
 HEADERS += \
     canva.h \
-    image.h \
-    mainwindow.h \
-    widget.h
+    mainwindow.h
 
 FORMS += \
-    widget.ui
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
