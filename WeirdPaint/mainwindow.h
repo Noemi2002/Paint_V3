@@ -25,6 +25,8 @@ private slots:
 
     bool guardarImagen(const QString &fileName, const char *fileFormat);
 
+    void on_actionRect_ngulo_triggered();
+
 private:
     QPainter *mPainter;
     QImage *mImage;

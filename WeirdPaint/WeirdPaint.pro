@@ -10,12 +10,16 @@ CONFIG += c++17
 
 SOURCES += \
     canva.cpp \
+    figuras.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    rectangulo.cpp
 
 HEADERS += \
     canva.h \
-    mainwindow.h
+    figuras.h \
+    mainwindow.h \
+    rectangulo.h
 
 FORMS += \
     mainwindow.ui

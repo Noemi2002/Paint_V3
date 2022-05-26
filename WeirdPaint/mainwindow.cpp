@@ -15,6 +15,8 @@
 #include <QString>
 #include <QByteArray>
 
+#include "rectangulo.h"
+
 #define DEFAULT_SIZE 5
 
 MainWindow::MainWindow(QWidget *parent)
@@ -23,15 +25,16 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     mImage = new QImage(QApplication::desktop()->size(), QImage::Format_ARGB32_Premultiplied);
+    mImage->fill(Qt::white);
     mPainter = new QPainter(mImage);
     mEnabled = false;
     mColor = QColor(Qt::black);
     mgrosor = DEFAULT_SIZE;
 
     borradorEnabled = false;
-
     ptrCanva = new Canva(this);
 }
+
 
 MainWindow::~MainWindow()
 {
@@ -150,6 +153,7 @@ bool MainWindow::on_actionGuardar_Imagen_triggered()
 
 bool MainWindow::guardarImagen(const QString &fileName, const char *fileFormat)
 {
+
     QImage visibleImage = *mImage;
     //resizeImage(&visibleImage, size());
 
@@ -158,5 +162,15 @@ bool MainWindow::guardarImagen(const QString &fileName, const char *fileFormat)
         return true;
     }
     return false;
+}
+
+
+void MainWindow::on_actionRect_ngulo_triggered()
+{
+    //scene = new QGraphicsScene(this);
+    //ui->graphicsView->setScene(scene);
+
+    Rectangulo square = new Rectangulo;
+    //scene->addItem(square);
 }
 
