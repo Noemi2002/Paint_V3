@@ -23,9 +23,9 @@ private slots:
     void on_actionBorrador_triggered();
     bool on_actionGuardar_Imagen_triggered();
 
-    bool guardarImagen(const QString &fileName, const char *fileFormat);
 
     void on_actionRect_ngulo_triggered();
+
 
 private:
     QPainter *mPainter;
@@ -37,15 +37,17 @@ private:
     int mgrosor;
     bool borradorEnabled;
 
-protected:
+    Canva *canvaVentana;
+
+
+/*protected:
    void paintEvent(QPaintEvent *) override;
    void mousePressEvent(QMouseEvent *e) override;
    void mouseMoveEvent(QMouseEvent *e) override;
-   void mouseReleaseEvent(QMouseEvent *e) override;
+   void mouseReleaseEvent(QMouseEvent *e) override;*/
 
 
 private:
     Ui::MainWindow *ui;
-    Canva *ptrCanva;
 };
 #endif // MAINWINDOW_H

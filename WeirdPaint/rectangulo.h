@@ -9,13 +9,7 @@ class Rectangulo
 {
 public:
     Rectangulo();
-    QRectF boundingRect() const;
-    void paint(QPainter *painter, QWidget *widget);
 
-protected:
-    void mousePressEvent(*event) override;
-    void mouseReleaseEvent( event) override;
-    bool pressed;
 };
 
 #endif // RECTANGULO_H
