@@ -118,5 +118,16 @@ bool Canva::guardarImagen(const QString &fileName, const char *fileFormat)
     return false;
 }
 
+QImage Canva::mostrarImagen(QImage imagePath)
+{
+        QImage new_image(imagePath.width(), imagePath.height(), imagePath.format());
+        int height_subtraction = imagePath.height() - 1;
+        for(int x = 0; x < imagePath.width(); ++x)
+            for(int y = 0; y < imagePath.height(); ++y)
+                new_image.setPixel(x, height_subtraction - y, imagePath.pixel(x, y));
+        return new_image;
+
+}
+
 
 

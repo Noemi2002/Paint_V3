@@ -19,6 +19,7 @@ public:
     void cambiarGrosor(int grosorSeleccionado);
     void cambiarEstadoBorrador(std::string clave);
     bool guardarImagen(const QString &fileName, const char *fileFormat);
+    QImage mostrarImagen(QImage imagePath);
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;

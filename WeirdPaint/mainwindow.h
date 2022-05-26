@@ -27,6 +27,8 @@ private slots:
     void on_actionRect_ngulo_triggered();
 
 
+    void on_actionCargar_Imagen_triggered();
+
 private:
     QPainter *mPainter;
     QImage *mImage;

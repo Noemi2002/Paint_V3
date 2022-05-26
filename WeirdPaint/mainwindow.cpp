@@ -24,16 +24,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setCentralWidget(canvaVentana);
-    //borradorEnabled = false;
-
 }
 
 
-MainWindow::~MainWindow()
-{
-}
-
-
+MainWindow::~MainWindow(){}
 
 void MainWindow::on_actionL_piz_triggered()
 {
@@ -49,6 +43,7 @@ void MainWindow::on_actionGrosor_triggered()
 
 }
 
+
 void MainWindow::on_actionColor_triggered()
 {
     mColor = QColorDialog::getColor(Qt::black, this, "Color de lápiz");
@@ -56,7 +51,6 @@ void MainWindow::on_actionColor_triggered()
         canvaVentana->cambiarColor(mColor);
 
 }
-
 
 
 void MainWindow::on_actionBorrador_triggered()
@@ -98,4 +92,15 @@ void MainWindow::on_actionRect_ngulo_triggered()
 
 
 
+
+
+void MainWindow::on_actionCargar_Imagen_triggered()
+{
+    QString s = QFileDialog::getOpenFileName(this, tr("Open File"),
+                                                            ".",
+                                                            tr("BMP image (*.bmp)"));
+    QImage bmpImagen;
+    bmpImagen.load(s);
+    canvaVentana->mostrarImagen(bmpImagen);
+}
 

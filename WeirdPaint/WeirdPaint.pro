@@ -13,12 +13,14 @@ SOURCES += \
     figuras.cpp \
     main.cpp \
     mainwindow.cpp \
+    pixeles.cpp \
     rectangulo.cpp
 
 HEADERS += \
     canva.h \
     figuras.h \
     mainwindow.h \
+    pixeles.h \
     rectangulo.h
 
 FORMS += \
