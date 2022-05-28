@@ -32,7 +32,7 @@ private slots:
 
     void on_actionLapicero_triggered();
 
-<<<<<<< Updated upstream
+
     void on_actionColorPicker_triggered();
 
     void on_actionNegativo_triggered();
@@ -44,13 +44,13 @@ private slots:
     void on_actionC_lido_triggered();
 
     void on_actionFiltro_triggered();
-=======
+
     void on_actionCirculo_triggered();
 
     void on_actionRectangulo_triggered();
 
     void on_actionCuadrado_triggered();
->>>>>>> Stashed changes
+
 
 private:
     QPainter *mPainter;

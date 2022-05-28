@@ -105,7 +105,7 @@ void MainWindow::on_actionLapicero_triggered()
 
 }
 
-<<<<<<< Updated upstream
+
 
 void MainWindow::on_actionColorPicker_triggered()
 {
@@ -142,7 +142,7 @@ void MainWindow::on_actionFiltro_triggered()
     canvaVentana->filtroAzul();
 }
 
-=======
+
 void MainWindow::on_actionCirculo_triggered()
 {
     mCoorX = QInputDialog::getInt(this, "Coordenada_X", "Ingrese la posición en X: ", 0,0);
@@ -187,4 +187,4 @@ void MainWindow::on_actionCuadrado_triggered()
 
     canvaVentana->Cuadrado();
 }
->>>>>>> Stashed changes
+

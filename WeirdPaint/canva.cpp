@@ -20,13 +20,12 @@ void Canva::cambiarGrosor(int grosorSeleccionado)
     grosor = grosorSeleccionado;
 }
 
-<<<<<<< Updated upstream
 void Canva::cambiarEstadoColorPicker()
 {
     colorPickerActivado = true;
 }
 
-=======
+
 
 
 void Canva::cambiarCoorX(int CoorXSeleccionado)
@@ -101,7 +100,7 @@ void Canva::cambiarLado(int LadoCuad)
 
 
 
->>>>>>> Stashed changes
+
 void Canva::cambiarEstadoBorrador(std::string clave)
 {
     if(clave == "lapiz"){
@@ -141,12 +140,13 @@ void Canva::mouseMoveEvent(QMouseEvent *event)
 void Canva::mouseReleaseEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton && dibujo) {
-        dibujarFiguras(event->pos());
-        //event->accept();
-        update();
         Final = event->pos();
+        dibujarFiguras(Final);
+        //event->accept();
+
         dibujo = false;
         Inicio=Final;
+        update();
     }
 }
 
@@ -318,7 +318,7 @@ void Canva::Rectangulo()
     borradorEnabled = false;
     rectangulo = true;
 }
-<<<<<<< Updated upstream
+
 
 void Canva::filtroNegativo()
 {
@@ -395,11 +395,12 @@ void Canva::filtroAzul()
     }
     imagenActivada = true;
     update();
-=======
+}
+
 void Canva::Cuadrado()
 {
     lapicero = false;
     borradorEnabled = false;
     cuadrado = true;
->>>>>>> Stashed changes
+
 }

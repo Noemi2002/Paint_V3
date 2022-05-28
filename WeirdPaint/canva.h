@@ -41,16 +41,14 @@ public:
      void lapiceroOf();
     void Circulo();
     void Rectangulo();
-<<<<<<< Updated upstream
     void cambiarEstadoColorPicker();
     void filtroNegativo();
     void filtroBlancoNegro();
     void intercambioColores();
     void filtroCalido();
     void filtroAzul();
-=======
     void Cuadrado();
->>>>>>> Stashed changes
+
     //QImage mostrarImagen(QImage imagePath);
 
 protected:
@@ -93,12 +91,9 @@ private:
     bool lapicero;
     bool circulo;
     bool rectangulo;
-<<<<<<< Updated upstream
     bool colorPickerActivado = false;
 
-=======
     bool cuadrado;
->>>>>>> Stashed changes
     QRgb coloresImagen[1000][1000];
 
 
