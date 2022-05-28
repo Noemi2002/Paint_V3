@@ -56,7 +56,7 @@ private:
     bool lapicero;
     bool rectangulo;
 
-    QRgb coloresImagen[1000][1000];
+    QRgb coloresImagen[2000][2000];
 
 
 
