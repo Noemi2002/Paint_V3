@@ -23,6 +23,9 @@ public:
     void cambiarEstadoBorrador(std::string clave);
     bool guardarImagen(const QString &fileName, const char *fileFormat);
     void asignarColoresMatriz(QImage imagePath);
+
+    void lapiceroOn();
+    void Rectangulo();
     //QImage mostrarImagen(QImage imagePath);
 
 protected:
@@ -33,6 +36,7 @@ protected:
     void resizeEvent(QResizeEvent *event) override;
     //void paintEvent(QPaintEvent *event, QImage filename);
 
+
 private:
     void dibujarFiguras(const QPoint &endPoint);
     void resizeImage(QImage *image, const QSize &newSize);
@@ -41,11 +45,15 @@ private:
     bool dibujo = false;
     bool borradorEnabled = false;
     bool imagenActivada = false;
+    QPoint Inicio;
+    QPoint Final;
     int grosor = DEFAULT_SIZE;
     QColor color = DEFAULT_COLOR;
     QImage image;
     QPoint puntoFinal;
     QImage direccion;
+    bool lapicero;
+    bool rectangulo;
 
     QRgb coloresImagen[1000][1000];
 

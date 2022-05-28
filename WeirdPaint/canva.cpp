@@ -23,9 +23,11 @@ void Canva::cambiarGrosor(int grosorSeleccionado)
 void Canva::cambiarEstadoBorrador(std::string clave)
 {
     if(clave == "lapiz"){
+    lapicero = false;
     borradorEnabled = false;
     }else{
         borradorEnabled = true;
+
     }
 }
 
@@ -34,6 +36,12 @@ void Canva::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton) {
         puntoFinal = event->pos();
+
+        event->accept();
+
+        Inicio = event->pos();
+
+
         dibujo = true;
     }
 }
@@ -43,20 +51,26 @@ void Canva::mouseMoveEvent(QMouseEvent *event)
     if ((event->buttons() & Qt::LeftButton) && dibujo)
         dibujarFiguras(event->pos());
 
+
 }
 
 void Canva::mouseReleaseEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton && dibujo) {
         dibujarFiguras(event->pos());
+        //event->accept();
+        update();
+        Final = event->pos();
         dibujo = false;
+        Inicio=Final;
     }
 }
 
 void Canva::paintEvent(QPaintEvent *event)
 {
+    QPainter painter(this);
     if (imagenActivada){
-        QPainter painter(this);
+
 
         int height_subtraction = direccion.height() - 1;
 
@@ -70,14 +84,22 @@ void Canva::paintEvent(QPaintEvent *event)
             }
         }
 
-             // Dibuja la imagen en la ventana
+
+        // Dibuja la imagen en la ventana
         painter.drawImage(10, 10, image);
         imagenActivada = false;
-    }else{
-    QPainter painter(this);
+       }
+
+
+    else{
+
     QRect dirtyRect = event->rect();
     painter.drawImage(dirtyRect, image, dirtyRect);
     }
+
+
+
+
 
 }
 
@@ -95,19 +117,30 @@ void Canva::resizeEvent(QResizeEvent *event)
 void Canva::dibujarFiguras(const QPoint &endPoint)
 {
     QPainter painter(&image);
+
+    if (lapicero)
+        {
+          painter.drawLine(Final,Inicio);
+        }
+
+    if (rectangulo)
+    {
+         painter.drawEllipse(76,27,20,20);
+    }
+
+
     if (borradorEnabled){
         painter.setPen(QPen(Qt::white, grosor, Qt::SolidLine, Qt::RoundCap,
                             Qt::RoundJoin));
+        }
 
-
-    }else{
+    else{
         painter.setPen(QPen(color, grosor, Qt::SolidLine, Qt::RoundCap,
                             Qt::RoundJoin));
-
     }
+
     painter.drawLine(puntoFinal, endPoint);
     modified = true;
-
     int rad = (grosor / 2) + 2;
     update(QRect(puntoFinal, endPoint).normalized()
                                      .adjusted(-rad, -rad, +rad, +rad));
@@ -142,11 +175,6 @@ bool Canva::guardarImagen(const QString &fileName, const char *fileFormat)
 void Canva::asignarColoresMatriz(QImage imagePath)
 {
         direccion = imagePath;
-        QImage new_image(imagePath.width(), imagePath.height(), imagePath.format());
-        int height_subtraction = imagePath.height() - 1;
-        for(int x = 0; x < imagePath.width(); ++x)
-            for(int y = 0; y < imagePath.height(); ++y)
-                coloresImagen[x][y] = new_image.pixel(x,y);
         imagenActivada = true;
         update();
 
@@ -155,6 +183,15 @@ void Canva::asignarColoresMatriz(QImage imagePath)
 
 }
 
+void Canva::lapiceroOn()
+{
+    lapicero = true;
+}
 
-
+void Canva::Rectangulo()
+{
+    lapicero = false;
+    borradorEnabled = false;
+    rectangulo = true;
+}
 

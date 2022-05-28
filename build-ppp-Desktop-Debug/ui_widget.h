@@ -11,7 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QLabel>
+#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
@@ -25,9 +25,10 @@ public:
     QPushButton *lapiceroButton;
     QPushButton *borradorButton;
     QPushButton *guardarButton;
-    QLabel *canva;
     QPushButton *colorBUtton;
     QPushButton *grosorButton;
+    QGraphicsView *canva;
+    QPushButton *linea;
 
     void setupUi(QWidget *Widget)
     {
@@ -49,18 +50,18 @@ public:
         guardarButton = new QPushButton(Widget);
         guardarButton->setObjectName(QString::fromUtf8("guardarButton"));
         guardarButton->setGeometry(QRect(20, 40, 111, 25));
-        canva = new QLabel(Widget);
-        canva->setObjectName(QString::fromUtf8("canva"));
-        canva->setGeometry(QRect(940, 450, 261, 121));
-        canva->setStyleSheet(QString::fromUtf8("#canva{\n"
-"background-color: white;\n"
-"}"));
         colorBUtton = new QPushButton(Widget);
         colorBUtton->setObjectName(QString::fromUtf8("colorBUtton"));
         colorBUtton->setGeometry(QRect(20, 190, 111, 25));
         grosorButton = new QPushButton(Widget);
         grosorButton->setObjectName(QString::fromUtf8("grosorButton"));
         grosorButton->setGeometry(QRect(20, 220, 111, 25));
+        canva = new QGraphicsView(Widget);
+        canva->setObjectName(QString::fromUtf8("canva"));
+        canva->setGeometry(QRect(170, 40, 1041, 541));
+        linea = new QPushButton(Widget);
+        linea->setObjectName(QString::fromUtf8("linea"));
+        linea->setGeometry(QRect(30, 270, 89, 25));
 
         retranslateUi(Widget);
 
@@ -75,9 +76,9 @@ public:
         lapiceroButton->setText(QApplication::translate("Widget", "Lapicero", nullptr));
         borradorButton->setText(QApplication::translate("Widget", "Borrador", nullptr));
         guardarButton->setText(QApplication::translate("Widget", "Guardar", nullptr));
-        canva->setText(QString());
         colorBUtton->setText(QApplication::translate("Widget", "Color", nullptr));
         grosorButton->setText(QApplication::translate("Widget", "Grosor", nullptr));
+        linea->setText(QApplication::translate("Widget", "linea", nullptr));
     } // retranslateUi
 
 };

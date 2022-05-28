@@ -53,15 +53,17 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../ppp/dibujo.cpp \
-		../ppp/imagenbitmap.cpp \
+		../ppp/image.cpp \
 		../ppp/main.cpp \
 		../ppp/widget.cpp moc_dibujo.cpp \
+		moc_image.cpp \
 		moc_widget.cpp
 OBJECTS       = dibujo.o \
-		imagenbitmap.o \
+		image.o \
 		main.o \
 		widget.o \
 		moc_dibujo.o \
+		moc_image.o \
 		moc_widget.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -140,9 +142,9 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../ppp/ppp.pro ../ppp/dibujo.h \
-		../ppp/imagenbitmap.h \
+		../ppp/image.h \
 		../ppp/widget.h ../ppp/dibujo.cpp \
-		../ppp/imagenbitmap.cpp \
+		../ppp/image.cpp \
 		../ppp/main.cpp \
 		../ppp/widget.cpp
 QMAKE_TARGET  = ppp
@@ -326,8 +328,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../ppp/dibujo.h ../ppp/imagenbitmap.h ../ppp/widget.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../ppp/dibujo.cpp ../ppp/imagenbitmap.cpp ../ppp/main.cpp ../ppp/widget.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../ppp/dibujo.h ../ppp/image.h ../ppp/widget.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../ppp/dibujo.cpp ../ppp/image.cpp ../ppp/main.cpp ../ppp/widget.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../ppp/widget.ui $(DISTDIR)/
 
 
@@ -360,16 +362,24 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	x86_64-linux-gnu-g++ -pipe -g -std=gnu++1z -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_dibujo.cpp moc_widget.cpp
+compiler_moc_header_make_all: moc_dibujo.cpp moc_image.cpp moc_widget.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_dibujo.cpp moc_widget.cpp
+	-$(DEL_FILE) moc_dibujo.cpp moc_image.cpp moc_widget.cpp
 moc_dibujo.cpp: ../ppp/dibujo.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/caro/Desktop/Paint_V3/build-ppp-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/caro/Desktop/Paint_V3/ppp -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../ppp/dibujo.h -o moc_dibujo.cpp
 
+moc_image.cpp: ../ppp/image.h \
+		ui_widget.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/caro/Desktop/Paint_V3/build-ppp-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/caro/Desktop/Paint_V3/ppp -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../ppp/image.h -o moc_image.cpp
+
 moc_widget.cpp: ../ppp/widget.h \
 		../ppp/dibujo.h \
+		../ppp/image.h \
+		ui_widget.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/caro/Desktop/Paint_V3/build-ppp-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/caro/Desktop/Paint_V3/ppp -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../ppp/widget.h -o moc_widget.cpp
@@ -398,24 +408,27 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 dibujo.o: ../ppp/dibujo.cpp ../ppp/dibujo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dibujo.o ../ppp/dibujo.cpp
 
-imagenbitmap.o: ../ppp/imagenbitmap.cpp ../ppp/imagenbitmap.h \
-		../ppp/widget.h \
-		../ppp/dibujo.h \
+image.o: ../ppp/image.cpp ../ppp/image.h \
 		ui_widget.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o imagenbitmap.o ../ppp/imagenbitmap.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o image.o ../ppp/image.cpp
 
 main.o: ../ppp/main.cpp ../ppp/widget.h \
-		../ppp/dibujo.h
+		../ppp/dibujo.h \
+		../ppp/image.h \
+		ui_widget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../ppp/main.cpp
 
 widget.o: ../ppp/widget.cpp ../ppp/widget.h \
 		../ppp/dibujo.h \
-		ui_widget.h \
-		../ppp/imagenbitmap.h
+		../ppp/image.h \
+		ui_widget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o widget.o ../ppp/widget.cpp
 
 moc_dibujo.o: moc_dibujo.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dibujo.o moc_dibujo.cpp
+
+moc_image.o: moc_image.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_image.o moc_image.cpp
 
 moc_widget.o: moc_widget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_widget.o moc_widget.cpp

@@ -16,6 +16,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
 private slots:
     void on_actionL_piz_triggered();
     void on_actionColor_triggered();
@@ -29,6 +30,8 @@ private slots:
 
     void on_actionCargar_Imagen_triggered();
 
+    void on_actionLapicero_triggered();
+
 private:
     QPainter *mPainter;
     QImage *mImage;
@@ -38,6 +41,7 @@ private:
     QColor mColor;
     int mgrosor;
     bool borradorEnabled;
+
 
     Canva *canvaVentana;
 

@@ -104,6 +104,22 @@ void Widget::mouseMoveEvent(QMouseEvent *e)
         //
     }
 
+    if(lineaEnabled){
+        //borradorEnabled= true;
+        //mEnabled = false;
+        QPen pen(Qt::green);
+        pen.setCapStyle(Qt::RoundCap);
+        pen.setWidth(mgrosor);
+        mEnd = e->pos();
+        mPainter->setPen(pen);
+        rect-> rect (mBegin, mEnd);
+        mBegin = mEnd;
+        update(); //Hace que se ejecute paintEvent
+        e->accept();
+        //
+    }
+
+
 
     else
         {
@@ -121,6 +137,15 @@ void Widget::mouseMoveEvent(QMouseEvent *e)
 
 
 }
+
+void LineTool::drawTo(const QPoint &mEnd)
+    QPainter pa(this);
+    pa.setPen(static_cast<QPen>(*this));
+    pa.drawLine(getStartPoint(), endPoint);
+    update();
+}
+
+
 
 void Widget::mouseReleaseEvent(QMouseEvent *e)
 {
@@ -148,3 +173,10 @@ void Widget::on_borradorButton_clicked()
 
 
 
+
+void Widget::on_linea_clicked()
+
+{
+    LineTool()
+    lineaEnabled = true;
+}

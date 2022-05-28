@@ -75,6 +75,7 @@ bool MainWindow::on_actionGuardar_Imagen_triggered()
 
 void MainWindow::on_actionRect_ngulo_triggered()
 {
+    canvaVentana->Rectangulo();
     //scene = new QGraphicsScene(this);
     //ui->graphicsView->setScene(scene);
 
@@ -93,3 +94,11 @@ void MainWindow::on_actionCargar_Imagen_triggered()
     canvaVentana->asignarColoresMatriz(bmpImagen);
 }
 
+
+void MainWindow::on_actionLapicero_triggered()
+{
+
+    canvaVentana->lapiceroOn();
+    canvaVentana->cambiarEstadoBorrador("null");
+
+}
