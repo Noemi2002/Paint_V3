@@ -18,48 +18,31 @@ public:
 
 
 private slots:
+    //Funcionalidades básicas
     void on_actionL_piz_triggered();
     void on_actionColor_triggered();
     void on_actionGrosor_triggered();
     void on_actionBorrador_triggered();
     bool on_actionGuardar_Imagen_triggered();
-
-
-    //void on_actionRect_ngulo_triggered();
-
-
     void on_actionCargar_Imagen_triggered();
-
     void on_actionLapicero_triggered();
-
-
     void on_actionColorPicker_triggered();
-
     void on_actionNegativo_triggered();
-
     void on_actionIntercambio_de_azul_y_rojo_triggered();
-
     void on_actionBlanco_y_negro_triggered();
-
     void on_actionC_lido_triggered();
-
     void on_actionFiltro_triggered();
-
     void on_actionCirculo_triggered();
-
     void on_actionRectangulo_triggered();
-
     void on_actionCuadrado_triggered();
 
 
 private:
-    QPainter *mPainter;
-    QImage *mImage;
-    QPoint mBegin;
-    QPoint mEnd;
-    bool mEnabled;
+    //Características del lápiz
     QColor mColor;
     int mgrosor;
+
+    //Datos para las figuras
     int mCoorX;
     int mCoorY;
     int mradioX;
@@ -70,27 +53,17 @@ private:
     int mAncho;
     int mAlto;
 
-
     int XCuad;
     int YCuad;
     int LadoCuad;
 
 
-    bool borradorEnabled;
-
-
+    //Canvas
     Canva *canvaVentana;
 
-
-/*protected:
-   void paintEvent(QPaintEvent *) override;
-   void mousePressEvent(QMouseEvent *e) override;
-   void mouseMoveEvent(QMouseEvent *e) override;
-   void mouseReleaseEvent(QMouseEvent *e) override;*/
 
 
 private:
     Ui::MainWindow *ui;
-    //Imagen *ptrImagen;
 };
 #endif // MAINWINDOW_H

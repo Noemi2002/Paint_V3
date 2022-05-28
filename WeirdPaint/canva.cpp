@@ -10,97 +10,135 @@ Canva::Canva(QWidget *parent)
     borradorEnabled = false;
 }
 
+/**
+ * @brief Canva::cambiarColor
+ * @param colorSeleccionado
+ */
 void Canva::cambiarColor(const QColor &colorSeleccionado)
 {
     color = colorSeleccionado;
 }
 
+/**
+ * @brief Canva::cambiarGrosor
+ * @param grosorSeleccionado
+ */
 void Canva::cambiarGrosor(int grosorSeleccionado)
 {
     grosor = grosorSeleccionado;
 }
 
+/**
+ * @brief Canva::cambiarEstadoColorPicker
+ */
 void Canva::cambiarEstadoColorPicker()
 {
     colorPickerActivado = true;
 }
 
-
-
-
+/**
+ * @brief Canva::cambiarCoorX
+ * @param CoorXSeleccionado
+ */
 void Canva::cambiarCoorX(int CoorXSeleccionado)
 {
     CoordenadaX = CoorXSeleccionado;
 }
 
-
-
+/**
+ * @brief Canva::cambiarCoorY
+ * @param CoorYSeleccionado
+ */
 void Canva::cambiarCoorY(int CoorYSeleccionado)
 {
     CoordenadaY = CoorYSeleccionado;
 }
 
-
+/**
+ * @brief Canva::cambiarRadioX
+ * @param RadioXSeleccionado
+ */
 void Canva::cambiarRadioX(int RadioXSeleccionado)
 {
    RadioX = RadioXSeleccionado;
 }
 
-
+/**
+ * @brief Canva::cambiarRadioY
+ * @param RadioYSeleccionado
+ */
 void Canva::cambiarRadioY(int RadioYSeleccionado)
 {
     RadioY = RadioYSeleccionado;
 }
 
-
-
+/**
+ * @brief Canva::cambiarAncho
+ * @param AnchoSeleccionado
+ */
 void Canva::cambiarAncho(int AnchoSeleccionado)
 {
   Ancho = AnchoSeleccionado;
 }
 
-
+/**
+ * @brief Canva::cambiarAlto
+ * @param AlturaSeleccionado
+ */
 void Canva::cambiarAlto(int AlturaSeleccionado)
 {
     Altura = AlturaSeleccionado;
 }
 
-
-
+/**
+ * @brief Canva::cambiarX
+ * @param XSeleccionado
+ */
 void Canva::cambiarX(int XSeleccionado)
 {
   X = XSeleccionado;
 }
 
-
+/**
+ * @brief Canva::cambiarY
+ * @param YSeleccionado
+ */
 void Canva::cambiarY(int YSeleccionado)
 {
     Y = YSeleccionado;
 }
 
-
-
-
+/**
+ * @brief Canva::cambiarPosX
+ * @param PosXSeleccionado
+ */
 void Canva::cambiarPosX(int PosXSeleccionado)
 {
     XP = PosXSeleccionado;
 }
 
-
+/**
+ * @brief Canva::cambiarPosY
+ * @param PosYSeleccionado
+ */
 void Canva::cambiarPosY(int PosYSeleccionado)
 {
     YP = PosYSeleccionado;
 }
 
-
+/**
+ * @brief Canva::cambiarLado
+ * @param LadoCuad
+ */
 void Canva::cambiarLado(int LadoCuad)
 {
     LadoP = LadoCuad;
 }
 
-
-
-
+/**
+ * @brief Canva::cambiarEstadoBorrador
+ * @param clave
+ */
 void Canva::cambiarEstadoBorrador(std::string clave)
 {
     if(clave == "lapiz"){
@@ -108,11 +146,13 @@ void Canva::cambiarEstadoBorrador(std::string clave)
     borradorEnabled = false;
     }else{
         borradorEnabled = true;
-
     }
 }
 
-
+/**
+ * @brief Canva::mousePressEvent
+ * @param event
+ */
 void Canva::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton) {
@@ -123,65 +163,63 @@ void Canva::mousePressEvent(QMouseEvent *event)
                 QColor coloPickerColor = image.pixelColor(x, y);
                 cambiarColor(coloPickerColor);
                 colorPickerActivado = false;
-
         }
             dibujo = true;
         }
 }
 
+/**
+ * @brief Canva::mouseMoveEvent
+ * @param event
+ */
 void Canva::mouseMoveEvent(QMouseEvent *event)
 {
     if ((event->buttons() & Qt::LeftButton) && dibujo)
         dibujarFiguras(event->pos());
-
-
 }
 
+/**
+ * @brief Canva::mouseReleaseEvent
+ * @param event
+ */
 void Canva::mouseReleaseEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton && dibujo) {
         Final = event->pos();
         dibujarFiguras(Final);
-        //event->accept();
-
         dibujo = false;
         Inicio=Final;
         update();
     }
 }
 
+/**
+ * @brief Canva::paintEvent
+ * @param event
+ */
 void Canva::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
     if (imagenActivada){
-        int height_subtraction = direccion.height() - 1;
-
-
         for (int i = 0; i < direccion.width(); i++)
         {
             for(int j = 0;j < direccion.height(); j++)
             {
-                image.setPixel (i, height_subtraction - j, coloresImagen[i][j]);
+                image.setPixel (i, j, coloresImagen[i][j]);
             }
         }
-
-
-        // Dibuja la imagen en la ventana
         painter.drawImage(10, 10, image);
         imagenActivada = false;
-       }
-
-
-    else{
-
+       }else{
     QRect dirtyRect = event->rect();
     painter.drawImage(dirtyRect, image, dirtyRect);
     }
-
-
-
 }
 
+/**
+ * @brief Canva::resizeEvent
+ * @param event
+ */
 void Canva::resizeEvent(QResizeEvent *event)
 {
     if (width() > image.width() || height() > image.height()) {
@@ -193,57 +231,37 @@ void Canva::resizeEvent(QResizeEvent *event)
     QWidget::resizeEvent(event);
 }
 
-
+/**
+ * @brief Canva::dibujarFiguras
+ * @param endPoint
+ */
 void Canva::dibujarFiguras(const QPoint &endPoint)
 {
     QPainter painter(&image);
-
+    painter.setPen(QPen(color, grosor, Qt::SolidLine, Qt::RoundCap,
+                        Qt::RoundJoin));
     if (lapicero)
         {
-        painter.setPen(QPen(color, grosor, Qt::SolidLine, Qt::RoundCap,
-                            Qt::RoundJoin));
          painter.drawLine(Final,Inicio);
         }
-
     if (circulo)
-
     {
-        painter.setPen(QPen(color, grosor, Qt::SolidLine, Qt::RoundCap,
-                             Qt::RoundJoin));
-         painter.drawEllipse(CoordenadaX,CoordenadaY,RadioX,RadioY);
+        painter.drawEllipse(CoordenadaX,CoordenadaY,RadioX,RadioY);
          }
-
     if(rectangulo)
     {
-
-        painter.setPen(QPen(color, grosor, Qt::SolidLine, Qt::RoundCap,
-                             Qt::RoundJoin));
         painter.drawRect(X,Y,Ancho,Altura);
     }
 
     if(cuadrado)
-
     {
-        painter.setPen(QPen(color, grosor, Qt::SolidLine, Qt::RoundCap,
-                             Qt::RoundJoin));
         painter.drawRect(XP,YP,LadoP,LadoP);
     }
-
-
-
-    if (borradorEnabled){
-        //rectangulo = false;
-
+    if (borradorEnabled)
+    {
         painter.setPen(QPen(Qt::white, grosor, Qt::SolidLine, Qt::RoundCap,
                             Qt::RoundJoin));
         }
-
-
-    else{
-        painter.setPen(QPen(color, grosor, Qt::SolidLine, Qt::RoundCap,
-                            Qt::RoundJoin));
-    }
-
     painter.drawLine(puntoFinal, endPoint);
     modified = true;
     int rad = (grosor / 2) + 2;
@@ -252,6 +270,11 @@ void Canva::dibujarFiguras(const QPoint &endPoint)
     puntoFinal = endPoint;
 }
 
+/**
+ * @brief Canva::resizeImage
+ * @param image
+ * @param newSize
+ */
 void Canva::resizeImage(QImage *image, const QSize &newSize)
 {
     if (image->size() == newSize)
@@ -264,9 +287,14 @@ void Canva::resizeImage(QImage *image, const QSize &newSize)
     *image = newImage;
 }
 
+/**
+ * @brief Canva::guardarImagen
+ * @param fileName
+ * @param fileFormat
+ * @return
+ */
 bool Canva::guardarImagen(const QString &fileName, const char *fileFormat)
 {
-
     QImage visibleImage = image;
     resizeImage(&visibleImage, size());
 
@@ -277,6 +305,10 @@ bool Canva::guardarImagen(const QString &fileName, const char *fileFormat)
     return false;
 }
 
+/**
+ * @brief Canva::asignarColoresMatriz
+ * @param imagePath
+ */
 void Canva::asignarColoresMatriz(QImage imagePath)
 {
         direccion = imagePath;
@@ -290,28 +322,38 @@ void Canva::asignarColoresMatriz(QImage imagePath)
             }
         }
         update();
-
 }
 
+/**
+ * @brief Canva::lapiceroOn
+ */
 void Canva::lapiceroOn()
 {
     lapicero = true;
     borradorEnabled = false;
 }
 
+/**
+ * @brief Canva::lapiceroOf
+ */
 void Canva::lapiceroOf()
 {
     lapicero = false;
-
 }
 
-
+/**
+ * @brief Canva::Circulo
+ */
 void Canva::Circulo()
 {
     lapicero = false;
     borradorEnabled = false;
     circulo = true;
 }
+
+/**
+ * @brief Canva::Rectangulo
+ */
 void Canva::Rectangulo()
 {
     lapicero = false;
@@ -319,7 +361,9 @@ void Canva::Rectangulo()
     rectangulo = true;
 }
 
-
+/**
+ * @brief Canva::filtroNegativo
+ */
 void Canva::filtroNegativo()
 {
 
@@ -335,13 +379,15 @@ void Canva::filtroNegativo()
     update();
 }
 
+/**
+ * @brief Canva::filtroBlancoNegro
+ */
 void Canva::filtroBlancoNegro()
 {
     for (int i = 0; i < direccion.width(); i++)
     {
         for (int j = 0; j < direccion.height(); j++)
         {
-
             QColor nueva =direccion.pixelColor(i, j);
             int blue = nueva.blue();
             int green = nueva.green();
@@ -354,6 +400,9 @@ void Canva::filtroBlancoNegro()
     update();
 }
 
+/**
+ * @brief Canva::intercambioColores
+ */
 void Canva::intercambioColores()
 {
     QImage nueva = direccion.rgbSwapped();
@@ -361,7 +410,6 @@ void Canva::intercambioColores()
     {
         for (int j = 0; j <+ nueva.height(); j++)
         {
-
             coloresImagen[i][j] = nueva.pixelColor(i, j).QColor::rgb();
         }
     }
@@ -369,6 +417,9 @@ void Canva::intercambioColores()
     update();
 }
 
+/**
+ * @brief Canva::filtroCalido
+ */
 void Canva::filtroCalido()
 {
     for (int i = 0; i < direccion.width(); i++)
@@ -383,6 +434,9 @@ void Canva::filtroCalido()
     update();
 }
 
+/**
+ * @brief Canva::filtroAzul
+ */
 void Canva::filtroAzul()
 {
     for (int i = 0; i < direccion.width(); i++)
@@ -397,10 +451,12 @@ void Canva::filtroAzul()
     update();
 }
 
+/**
+ * @brief Canva::Cuadrado
+ */
 void Canva::Cuadrado()
 {
     lapicero = false;
     borradorEnabled = false;
     cuadrado = true;
-
 }

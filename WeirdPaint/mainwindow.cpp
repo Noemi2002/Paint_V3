@@ -1,13 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <QPixmap>
 #include <QFileDialog>
-
-#include <QDesktopWidget>
-#include <QMouseEvent>
-#include <QPaintEvent>
-#include <QPainter>
 #include <QImage>
 #include <QInputDialog>
 #include <QColorDialog>
@@ -22,36 +16,33 @@ MainWindow::MainWindow(QWidget *parent)
     , canvaVentana(new Canva(this))
 {
     ui->setupUi(this);
-
     setCentralWidget(canvaVentana);
 }
 
 
 MainWindow::~MainWindow(){}
 
+/**
+ * Cambia el estaod del borrador y el lapiz
+ * @brief MainWindow::on_actionL_piz_triggered
+ */
 void MainWindow::on_actionL_piz_triggered()
 {
     canvaVentana->cambiarEstadoBorrador("lapiz");
-    //borradorEnabled = false;
 }
 
-
+/**
+ * @brief MainWindow::on_actionGrosor_triggered
+ */
 void MainWindow::on_actionGrosor_triggered()
 {
     mgrosor = QInputDialog::getInt(this, "Tamaño de lápiz", "Ingrese el tamaño: ", 5, 1);
     canvaVentana->cambiarGrosor(mgrosor);
 }
 
-/*void MainWindow::on_actionRect_ngulo_triggered()
-{
-
-
-
-}*/
-
-
-
-
+/**
+ * @brief MainWindow::on_actionColor_triggered
+ */
 void MainWindow::on_actionColor_triggered()
 {
     mColor = QColorDialog::getColor(Qt::black, this, "Color de lápiz");
@@ -59,14 +50,19 @@ void MainWindow::on_actionColor_triggered()
         canvaVentana->cambiarColor(mColor);
 }
 
-
+/**
+ * @brief MainWindow::on_actionBorrador_triggered
+ */
 void MainWindow::on_actionBorrador_triggered()
 {
     canvaVentana->cambiarEstadoBorrador("borrador");
     canvaVentana->lapiceroOf();
 }
 
-
+/**
+ * @brief MainWindow::on_actionGuardar_Imagen_triggered
+ * @return
+ */
 bool MainWindow::on_actionGuardar_Imagen_triggered()
 {
     QByteArray formatoImage = "bmp";
@@ -82,10 +78,9 @@ bool MainWindow::on_actionGuardar_Imagen_triggered()
     return canvaVentana->guardarImagen(fileName, formatoImage.constData());
 }
 
-
-
-
-
+/**
+ * @brief MainWindow::on_actionCargar_Imagen_triggered
+ */
 void MainWindow::on_actionCargar_Imagen_triggered()
 {
     QString s = QFileDialog::getOpenFileName(this, tr("Open File"),
@@ -96,53 +91,66 @@ void MainWindow::on_actionCargar_Imagen_triggered()
     canvaVentana->asignarColoresMatriz(bmpImagen);
 }
 
-
+/**
+ * @brief MainWindow::on_actionLapicero_triggered
+ */
 void MainWindow::on_actionLapicero_triggered()
 {
-
     canvaVentana->lapiceroOn();
     canvaVentana->cambiarEstadoBorrador("null");
-
 }
 
-
-
+/**
+ * @brief MainWindow::on_actionColorPicker_triggered
+ */
 void MainWindow::on_actionColorPicker_triggered()
 {
     canvaVentana->cambiarEstadoColorPicker();
 }
 
-
+/**
+ * @brief MainWindow::on_actionNegativo_triggered
+ */
 void MainWindow::on_actionNegativo_triggered()
 {
     canvaVentana->filtroNegativo();
 }
 
-
+/**
+ * @brief MainWindow::on_actionIntercambio_de_azul_y_rojo_triggered
+ */
 void MainWindow::on_actionIntercambio_de_azul_y_rojo_triggered()
 {
     canvaVentana->intercambioColores();
 }
 
-
+/**
+ * @brief MainWindow::on_actionBlanco_y_negro_triggered
+ */
 void MainWindow::on_actionBlanco_y_negro_triggered()
 {
     canvaVentana->filtroBlancoNegro();
 }
 
-
+/**
+ * @brief MainWindow::on_actionC_lido_triggered
+ */
 void MainWindow::on_actionC_lido_triggered()
 {
     canvaVentana->filtroCalido();
 }
 
-
+/**
+ * @brief MainWindow::on_actionFiltro_triggered
+ */
 void MainWindow::on_actionFiltro_triggered()
 {
     canvaVentana->filtroAzul();
 }
 
-
+/**
+ * @brief MainWindow::on_actionCirculo_triggered
+ */
 void MainWindow::on_actionCirculo_triggered()
 {
     mCoorX = QInputDialog::getInt(this, "Coordenada_X", "Ingrese la posición en X: ", 0,0);
@@ -158,6 +166,9 @@ void MainWindow::on_actionCirculo_triggered()
     canvaVentana->Circulo();
 }
 
+/**
+ * @brief MainWindow::on_actionRectangulo_triggered
+ */
 void MainWindow::on_actionRectangulo_triggered()
 {
     X = QInputDialog::getInt(this, "X", "Ingrese la posición en X: ", 0,0);
@@ -173,6 +184,9 @@ void MainWindow::on_actionRectangulo_triggered()
     canvaVentana->Rectangulo();
 }
 
+/**
+ * @brief MainWindow::on_actionCuadrado_triggered
+ */
 void MainWindow::on_actionCuadrado_triggered()
 {
 

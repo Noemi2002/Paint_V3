@@ -18,38 +18,42 @@ class Canva : public QWidget
 public:
     explicit Canva(QWidget *parent = nullptr);
 
+    //Características del lápiz
     void cambiarColor(const QColor &colorSeleccionado);
     void cambiarGrosor(int grosorSeleccionado);
     void cambiarEstadoBorrador(std::string clave);
+    void lapiceroOn();
+    void lapiceroOf();
+
+    //Características de la imagen
     bool guardarImagen(const QString &fileName, const char *fileFormat);
     void asignarColoresMatriz(QImage imagePath);
-    void cambiarCoorX(int CoorXSeleccionado);
-    void cambiarCoorY(int CoorYSeleccionado);
-    void cambiarRadioY(int RadioYSeleccionado);
-    void cambiarRadioX(int RadioXSeleccionado);
-    void cambiarAlto(int AltoSeleccionado);
-    void cambiarAncho(int AnchoSeleccionado);
-    void cambiarX(int XSeleccionado);
-    void cambiarY(int YSeleccionado);
-
-
-    void cambiarPosX(int XCuad);
-    void cambiarPosY(int YCuad);
-    void cambiarLado(int LadoCuad);
-
-    void lapiceroOn();
-     void lapiceroOf();
-    void Circulo();
-    void Rectangulo();
     void cambiarEstadoColorPicker();
     void filtroNegativo();
     void filtroBlancoNegro();
     void intercambioColores();
     void filtroCalido();
     void filtroAzul();
+
+    //Características de las figuras
+        //Círculo
+    void cambiarCoorX(int CoorXSeleccionado);
+    void cambiarCoorY(int CoorYSeleccionado);
+    void cambiarRadioY(int RadioYSeleccionado);
+    void cambiarRadioX(int RadioXSeleccionado);
+    void Circulo();
+        //Rectángulo
+    void cambiarAlto(int AltoSeleccionado);
+    void cambiarAncho(int AnchoSeleccionado);
+    void cambiarX(int XSeleccionado);
+    void cambiarY(int YSeleccionado);
+    void Rectangulo();
+        //Cuadrado
+    void cambiarPosX(int XCuad);
+    void cambiarPosY(int YCuad);
+    void cambiarLado(int LadoCuad);
     void Cuadrado();
 
-    //QImage mostrarImagen(QImage imagePath);
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
@@ -57,19 +61,24 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event) override;
     void paintEvent(QPaintEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
-    //void paintEvent(QPaintEvent *event, QImage filename);
 
 
 private:
+    //Características de la sección de dibujo
     void dibujarFiguras(const QPoint &endPoint);
     void resizeImage(QImage *image, const QSize &newSize);
+
 
     bool modified = false;
     bool dibujo = false;
     bool borradorEnabled = false;
     bool imagenActivada = false;
-    QPoint Inicio;
-    QPoint Final;
+    bool lapicero;
+    bool circulo;
+    bool rectangulo;
+    bool colorPickerActivado = false;
+    bool cuadrado;
+
     int grosor = DEFAULT_SIZE;
     int CoordenadaX;
     int CoordenadaY;
@@ -79,21 +88,18 @@ private:
     int Altura;
     int X;
     int Y;
-
     int XP;
     int YP;
     int LadoP;
 
-    QColor color = DEFAULT_COLOR;
-    QImage image;
+    QPoint Inicio;
+    QPoint Final;
     QPoint puntoFinal;
-    QImage direccion;
-    bool lapicero;
-    bool circulo;
-    bool rectangulo;
-    bool colorPickerActivado = false;
 
-    bool cuadrado;
+    QImage image;
+    QImage direccion;
+
+    QColor color = DEFAULT_COLOR;
     QRgb coloresImagen[1000][1000];
 
 
