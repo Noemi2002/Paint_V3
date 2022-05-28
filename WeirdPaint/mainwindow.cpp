@@ -15,7 +15,6 @@
 #include <QString>
 #include <QByteArray>
 
-#include "rectangulo.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -23,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
     , canvaVentana(new Canva(this))
 {
     ui->setupUi(this);
+
     setCentralWidget(canvaVentana);
 }
 
@@ -40,7 +40,6 @@ void MainWindow::on_actionGrosor_triggered()
 {
     mgrosor = QInputDialog::getInt(this, "Tamaño de lápiz", "Ingrese el tamaño: ", 5, 1);
     canvaVentana->cambiarGrosor(mgrosor);
-
 }
 
 
@@ -49,7 +48,6 @@ void MainWindow::on_actionColor_triggered()
     mColor = QColorDialog::getColor(Qt::black, this, "Color de lápiz");
     if (mColor.isValid())
         canvaVentana->cambiarColor(mColor);
-
 }
 
 
@@ -75,7 +73,6 @@ bool MainWindow::on_actionGuardar_Imagen_triggered()
 }
 
 
-
 void MainWindow::on_actionRect_ngulo_triggered()
 {
     //scene = new QGraphicsScene(this);
@@ -86,14 +83,6 @@ void MainWindow::on_actionRect_ngulo_triggered()
 }
 
 
-
-
-
-
-
-
-
-
 void MainWindow::on_actionCargar_Imagen_triggered()
 {
     QString s = QFileDialog::getOpenFileName(this, tr("Open File"),
@@ -101,6 +90,6 @@ void MainWindow::on_actionCargar_Imagen_triggered()
                                                             tr("BMP image (*.bmp)"));
     QImage bmpImagen;
     bmpImagen.load(s);
-    canvaVentana->mostrarImagen(bmpImagen);
+    canvaVentana->asignarColoresMatriz(bmpImagen);
 }
 

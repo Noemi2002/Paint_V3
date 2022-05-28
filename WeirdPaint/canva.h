@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include <QPainter>
 #include <QPaintEvent>
+#include <QRgb>
+
+
 
 #define DEFAULT_COLOR Qt::black
 #define DEFAULT_SIZE 5
@@ -19,7 +22,8 @@ public:
     void cambiarGrosor(int grosorSeleccionado);
     void cambiarEstadoBorrador(std::string clave);
     bool guardarImagen(const QString &fileName, const char *fileFormat);
-    QImage mostrarImagen(QImage imagePath);
+    void asignarColoresMatriz(QImage imagePath);
+    //QImage mostrarImagen(QImage imagePath);
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
@@ -27,6 +31,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event) override;
     void paintEvent(QPaintEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
+    //void paintEvent(QPaintEvent *event, QImage filename);
 
 private:
     void dibujarFiguras(const QPoint &endPoint);
@@ -35,10 +40,16 @@ private:
     bool modified = false;
     bool dibujo = false;
     bool borradorEnabled = false;
+    bool imagenActivada = false;
     int grosor = DEFAULT_SIZE;
     QColor color = DEFAULT_COLOR;
     QImage image;
     QPoint puntoFinal;
+    QImage direccion;
+
+    QRgb coloresImagen[1000][1000];
+
+
 
 signals:
 

@@ -51,5 +51,6 @@ private:
 
 private:
     Ui::MainWindow *ui;
+    //Imagen *ptrImagen;
 };
 #endif // MAINWINDOW_H

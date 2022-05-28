@@ -55,9 +55,30 @@ void Canva::mouseReleaseEvent(QMouseEvent *event)
 
 void Canva::paintEvent(QPaintEvent *event)
 {
+    if (imagenActivada){
+        QPainter painter(this);
+
+        int height_subtraction = direccion.height() - 1;
+
+
+             // Cambiar el valor de píxel del área especificada
+        for (int i = 0; i < direccion.width(); i++)
+        {
+            for(int j = 0;j < direccion.height(); j++)
+            {
+                image.setPixel (i, height_subtraction - j, direccion.pixel(i, j)); // Establecer el valor de cada píxel
+            }
+        }
+
+             // Dibuja la imagen en la ventana
+        painter.drawImage(10, 10, image);
+        imagenActivada = false;
+    }else{
     QPainter painter(this);
     QRect dirtyRect = event->rect();
     painter.drawImage(dirtyRect, image, dirtyRect);
+    }
+
 }
 
 void Canva::resizeEvent(QResizeEvent *event)
@@ -118,16 +139,22 @@ bool Canva::guardarImagen(const QString &fileName, const char *fileFormat)
     return false;
 }
 
-QImage Canva::mostrarImagen(QImage imagePath)
+void Canva::asignarColoresMatriz(QImage imagePath)
 {
+        direccion = imagePath;
         QImage new_image(imagePath.width(), imagePath.height(), imagePath.format());
         int height_subtraction = imagePath.height() - 1;
         for(int x = 0; x < imagePath.width(); ++x)
             for(int y = 0; y < imagePath.height(); ++y)
-                new_image.setPixel(x, height_subtraction - y, imagePath.pixel(x, y));
-        return new_image;
+                coloresImagen[x][y] = new_image.pixel(x,y);
+        imagenActivada = true;
+        update();
+
+                //new_image.setPixel(x, height_subtraction - y, imagePath.pixel(x, y));
+        //return new_image;
 
 }
+
 
 
 
