@@ -54,6 +54,7 @@ void MainWindow::on_actionColor_triggered()
 void MainWindow::on_actionBorrador_triggered()
 {
     canvaVentana->cambiarEstadoBorrador("borrador");
+    canvaVentana->lapiceroOf();
 }
 
 

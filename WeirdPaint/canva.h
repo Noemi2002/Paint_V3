@@ -25,6 +25,7 @@ public:
     void asignarColoresMatriz(QImage imagePath);
 
     void lapiceroOn();
+     void lapiceroOf();
     void Rectangulo();
     //QImage mostrarImagen(QImage imagePath);
 

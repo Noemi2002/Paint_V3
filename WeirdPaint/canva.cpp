@@ -120,16 +120,23 @@ void Canva::dibujarFiguras(const QPoint &endPoint)
 
     if (lapicero)
         {
-          painter.drawLine(Final,Inicio);
+        painter.setPen(QPen(color, grosor, Qt::SolidLine, Qt::RoundCap,
+                            Qt::RoundJoin));
+         painter.drawLine(Final,Inicio);
         }
 
     if (rectangulo)
+
     {
          painter.drawEllipse(76,27,20,20);
+         painter.setPen(QPen(color, grosor, Qt::SolidLine, Qt::RoundCap,
+                             Qt::RoundJoin));
     }
 
 
     if (borradorEnabled){
+        rectangulo = false;
+
         painter.setPen(QPen(Qt::white, grosor, Qt::SolidLine, Qt::RoundCap,
                             Qt::RoundJoin));
         }
@@ -186,7 +193,15 @@ void Canva::asignarColoresMatriz(QImage imagePath)
 void Canva::lapiceroOn()
 {
     lapicero = true;
+    borradorEnabled = false;
 }
+
+void Canva::lapiceroOf()
+{
+    lapicero = false;
+
+}
+
 
 void Canva::Rectangulo()
 {
