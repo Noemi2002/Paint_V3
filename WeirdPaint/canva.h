@@ -34,6 +34,8 @@ public:
     void intercambioColores();
     void filtroCalido();
     void filtroAzul();
+    void nuevo();
+    bool canvaModificado();
 
     //Características de las figuras
         //Círculo
@@ -101,6 +103,7 @@ private:
 
     QColor color = DEFAULT_COLOR;
     QRgb coloresImagen[1000][1000];
+    QSize nuevoTamano;
 
 
 

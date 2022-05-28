@@ -8,6 +8,7 @@
 
 #include <QString>
 #include <QByteArray>
+#include <QMessageBox>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -200,5 +201,45 @@ void MainWindow::on_actionCuadrado_triggered()
     canvaVentana->cambiarLado(LadoCuad);
 
     canvaVentana->Cuadrado();
+}
+
+/**
+ * @brief MainWindow::on_actionNuevo_triggered
+ */
+void MainWindow::on_actionNuevo_triggered()
+{
+    if(cerrar())
+    canvaVentana->nuevo();
+}
+
+/**
+ * @brief MainWindow::cerrar
+ * @return
+ */
+bool MainWindow::cerrar(){
+    if (canvaVentana->canvaModificado()) {
+       QMessageBox::StandardButton alerta;
+       alerta = QMessageBox::warning(this, tr("¡Alerta!"),
+                          tr("No se han guardado los cambios, ¿quiere guardar el documento?"),
+                          QMessageBox::Save | QMessageBox::Discard
+                          | QMessageBox::Cancel);
+        if (alerta == QMessageBox::Save)
+            return on_actionGuardar_Imagen_triggered();
+        else if (alerta == QMessageBox::Cancel)
+            return false;
+    }
+    return true;
+}
+
+/**
+ * @brief MainWindow::closeEvent
+ * @param event
+ */
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if (cerrar())
+        event->accept();
+    else
+        event->ignore();
 }
 

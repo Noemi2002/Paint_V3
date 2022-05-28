@@ -213,6 +213,7 @@ void Canva::paintEvent(QPaintEvent *event)
        }else{
     QRect dirtyRect = event->rect();
     painter.drawImage(dirtyRect, image, dirtyRect);
+
     }
 }
 
@@ -459,4 +460,22 @@ void Canva::Cuadrado()
     lapicero = false;
     borradorEnabled = false;
     cuadrado = true;
+}
+
+/**
+ * @brief Canva::nuevo
+ */
+void Canva::nuevo()
+{
+    image.fill(qRgb(255, 255, 255));
+    modified = true;
+    update();
+}
+
+/**
+ * @brief Canva::canvaModificado
+ * @return
+ */
+bool Canva::canvaModificado(){
+    return modified;
 }

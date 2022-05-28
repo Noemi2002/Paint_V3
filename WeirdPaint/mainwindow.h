@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QCloseEvent>
 #include "canva.h"
 
 QT_BEGIN_NAMESPACE
@@ -35,6 +36,13 @@ private slots:
     void on_actionCirculo_triggered();
     void on_actionRectangulo_triggered();
     void on_actionCuadrado_triggered();
+    void on_actionNuevo_triggered();
+
+    bool cerrar();
+
+protected:
+    void closeEvent(QCloseEvent *event);
+
 
 
 private:
