@@ -103,3 +103,10 @@ void MainWindow::on_actionLapicero_triggered()
     canvaVentana->cambiarEstadoBorrador("null");
 
 }
+
+
+void MainWindow::on_actionColorPicker_triggered()
+{
+    canvaVentana->cambiarEstadoColorPicker();
+}
+

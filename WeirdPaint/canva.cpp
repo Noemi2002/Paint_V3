@@ -20,6 +20,11 @@ void Canva::cambiarGrosor(int grosorSeleccionado)
     grosor = grosorSeleccionado;
 }
 
+void Canva::cambiarEstadoColorPicker()
+{
+    colorPickerActivado = true;
+}
+
 void Canva::cambiarEstadoBorrador(std::string clave)
 {
     if(clave == "lapiz"){
@@ -35,15 +40,17 @@ void Canva::cambiarEstadoBorrador(std::string clave)
 void Canva::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton) {
-        puntoFinal = event->pos();
+            puntoFinal = event->pos();
+            if(colorPickerActivado){
+                int x = puntoFinal.x();
+                int y = puntoFinal.y();
+                QColor coloPickerColor = image.pixelColor(x, y);
+                cambiarColor(coloPickerColor);
+                colorPickerActivado = false;
 
-        event->accept();
-
-        Inicio = event->pos();
-
-
-        dibujo = true;
-    }
+        }
+            dibujo = true;
+        }
 }
 
 void Canva::mouseMoveEvent(QMouseEvent *event)

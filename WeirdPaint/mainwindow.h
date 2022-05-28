@@ -32,6 +32,8 @@ private slots:
 
     void on_actionLapicero_triggered();
 
+    void on_actionColorPicker_triggered();
+
 private:
     QPainter *mPainter;
     QImage *mImage;

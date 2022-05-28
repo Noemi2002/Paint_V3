@@ -27,6 +27,7 @@ public:
     void lapiceroOn();
      void lapiceroOf();
     void Rectangulo();
+    void cambiarEstadoColorPicker();
     //QImage mostrarImagen(QImage imagePath);
 
 protected:
@@ -55,6 +56,7 @@ private:
     QImage direccion;
     bool lapicero;
     bool rectangulo;
+    bool colorPickerActivado = false;
 
     QRgb coloresImagen[2000][2000];
 
