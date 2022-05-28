@@ -34,6 +34,12 @@ private slots:
 
     void on_actionColorPicker_triggered();
 
+    void on_actionNegativo_triggered();
+
+    void on_actionIntercambio_de_azul_y_rojo_triggered();
+
+    void on_actionBlanco_y_negro_triggered();
+
 private:
     QPainter *mPainter;
     QImage *mImage;

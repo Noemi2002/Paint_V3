@@ -28,6 +28,9 @@ public:
      void lapiceroOf();
     void Rectangulo();
     void cambiarEstadoColorPicker();
+    void filtroNegativo();
+    void filtroBlancoNegro();
+    void intercambioColores();
     //QImage mostrarImagen(QImage imagePath);
 
 protected:
@@ -58,7 +61,7 @@ private:
     bool rectangulo;
     bool colorPickerActivado = false;
 
-    QRgb coloresImagen[2000][2000];
+    QRgb coloresImagen[1000][1000];
 
 
 

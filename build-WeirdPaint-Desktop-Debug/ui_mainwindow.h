@@ -38,6 +38,7 @@ public:
     QAction *actionBlanco_y_negro;
     QAction *actionNegativo;
     QAction *actionNuevo;
+    QAction *actionIntercambio_de_azul_y_rojo;
     QWidget *centralwidget;
     QMenuBar *menubar;
     QMenu *menuArchivo;
@@ -85,6 +86,8 @@ public:
         actionNegativo->setObjectName(QString::fromUtf8("actionNegativo"));
         actionNuevo = new QAction(MainWindow);
         actionNuevo->setObjectName(QString::fromUtf8("actionNuevo"));
+        actionIntercambio_de_azul_y_rojo = new QAction(MainWindow);
+        actionIntercambio_de_azul_y_rojo->setObjectName(QString::fromUtf8("actionIntercambio_de_azul_y_rojo"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         MainWindow->setCentralWidget(centralwidget);
@@ -135,6 +138,7 @@ public:
         menuPintar->addAction(actionColorPicker);
         menuFiltros->addAction(actionBlanco_y_negro);
         menuFiltros->addAction(actionNegativo);
+        menuFiltros->addAction(actionIntercambio_de_azul_y_rojo);
 
         retranslateUi(MainWindow);
 
@@ -159,6 +163,7 @@ public:
         actionBlanco_y_negro->setText(QApplication::translate("MainWindow", "Blanco y negro", nullptr));
         actionNegativo->setText(QApplication::translate("MainWindow", "Negativo", nullptr));
         actionNuevo->setText(QApplication::translate("MainWindow", "Nuevo", nullptr));
+        actionIntercambio_de_azul_y_rojo->setText(QApplication::translate("MainWindow", "Intercambio de azul y rojo", nullptr));
         menuArchivo->setTitle(QApplication::translate("MainWindow", "Archivo", nullptr));
         menuCartuchera->setTitle(QApplication::translate("MainWindow", "Cartuchera", nullptr));
         menuCaracter_sticas->setTitle(QApplication::translate("MainWindow", "Caracter\303\255sticas", nullptr));

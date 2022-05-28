@@ -77,17 +77,14 @@ void Canva::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
     if (imagenActivada){
-
-
         int height_subtraction = direccion.height() - 1;
 
 
-             // Cambiar el valor de píxel del área especificada
         for (int i = 0; i < direccion.width(); i++)
         {
             for(int j = 0;j < direccion.height(); j++)
             {
-                image.setPixel (i, height_subtraction - j, direccion.pixel(i, j)); // Establecer el valor de cada píxel
+                image.setPixel (i, height_subtraction - j, coloresImagen[i][j]);
             }
         }
 
@@ -190,10 +187,15 @@ void Canva::asignarColoresMatriz(QImage imagePath)
 {
         direccion = imagePath;
         imagenActivada = true;
+        coloresImagen[direccion.width()][direccion.height()];
+        for (int i = 0; i < direccion.width(); i++)
+        {
+            for (int j = 0; j < direccion.height(); j++)
+            {
+                coloresImagen[i][j] = imagePath.pixelColor(i, j).QColor::rgb();
+            }
+        }
         update();
-
-                //new_image.setPixel(x, height_subtraction - y, imagePath.pixel(x, y));
-        //return new_image;
 
 }
 
@@ -217,3 +219,47 @@ void Canva::Rectangulo()
     rectangulo = true;
 }
 
+void Canva::filtroNegativo()
+{
+
+    for (int i = 0; i < direccion.width(); i++)
+    {
+        for (int j = 0; j < direccion.height(); j++)
+        {
+            QRgb nuevoColor = 255 - coloresImagen[i][j];
+            coloresImagen[i][j] = nuevoColor;
+        }
+    }
+    imagenActivada = true;
+    update();
+}
+
+void Canva::filtroBlancoNegro()
+{
+    /*QImage nueva = direccion.invertPixels();
+    for (int i = 0; i < nueva.height(); i++)
+    {
+        for (int j = 0; j < nueva.height(); j++)
+        {
+
+            coloresImagen[i][j] = nueva.pixelColor(i, j);
+        }
+    }
+    imagenActivada = true;
+    update();*/
+}
+
+void Canva::intercambioColores()
+{
+    QImage nueva = direccion.rgbSwapped();
+    for (int i = 0; i <+ nueva.width(); i++)
+    {
+        for (int j = 0; j <+ nueva.height(); j++)
+        {
+
+            coloresImagen[i][j] = nueva.pixelColor(i, j).QColor::rgb();
+        }
+    }
+    imagenActivada = true;
+    update();
+}

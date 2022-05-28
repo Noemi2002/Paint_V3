@@ -110,3 +110,21 @@ void MainWindow::on_actionColorPicker_triggered()
     canvaVentana->cambiarEstadoColorPicker();
 }
 
+
+void MainWindow::on_actionNegativo_triggered()
+{
+    canvaVentana->filtroNegativo();
+}
+
+
+void MainWindow::on_actionIntercambio_de_azul_y_rojo_triggered()
+{
+    canvaVentana->intercambioColores();
+}
+
+
+void MainWindow::on_actionBlanco_y_negro_triggered()
+{
+    canvaVentana->filtroBlancoNegro();
+}
+
