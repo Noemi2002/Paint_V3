@@ -50,14 +50,15 @@
     <property name="title">
      <string>Figuras</string>
     </property>
-    <addaction name="actionRect_ngulo"/>
-    <addaction name="actionTri_ngulo"/>
-    <addaction name="actionC_rculo"/>
+    <addaction name="actionCirculo"/>
+    <addaction name="actionCuadrado"/>
+    <addaction name="actionRectangulo"/>
    </widget>
    <widget class="QMenu" name="menuPintar">
     <property name="title">
      <string>Pintar</string>
     </property>
+    <addaction name="separator"/>
     <addaction name="actionFill"/>
     <addaction name="actionColorPicker"/>
    </widget>
@@ -126,19 +127,19 @@
     <string>Color</string>
    </property>
   </action>
-  <action name="actionRect_ngulo">
-   <property name="text">
-    <string>Rectángulo</string>
-   </property>
-  </action>
-  <action name="actionTri_ngulo">
-   <property name="text">
-    <string>Triángulo</string>
-   </property>
-  </action>
-  <action name="actionC_rculo">
+  <action name="actionCirculo">
    <property name="text">
     <string>Círculo</string>
+   </property>
+  </action>
+  <action name="actionCuadrado">
+   <property name="text">
+    <string>Cuadrado</string>
+   </property>
+  </action>
+  <action name="actionRectangulo">
+   <property name="text">
+    <string>Rectangulo </string>
    </property>
   </action>
   <action name="actionFill">

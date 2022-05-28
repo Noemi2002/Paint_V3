@@ -25,13 +25,14 @@ private slots:
     bool on_actionGuardar_Imagen_triggered();
 
 
-    void on_actionRect_ngulo_triggered();
+    //void on_actionRect_ngulo_triggered();
 
 
     void on_actionCargar_Imagen_triggered();
 
     void on_actionLapicero_triggered();
 
+<<<<<<< Updated upstream
     void on_actionColorPicker_triggered();
 
     void on_actionNegativo_triggered();
@@ -43,6 +44,13 @@ private slots:
     void on_actionC_lido_triggered();
 
     void on_actionFiltro_triggered();
+=======
+    void on_actionCirculo_triggered();
+
+    void on_actionRectangulo_triggered();
+
+    void on_actionCuadrado_triggered();
+>>>>>>> Stashed changes
 
 private:
     QPainter *mPainter;
@@ -52,6 +60,22 @@ private:
     bool mEnabled;
     QColor mColor;
     int mgrosor;
+    int mCoorX;
+    int mCoorY;
+    int mradioX;
+    int mradioY;
+
+    int X;
+    int Y;
+    int mAncho;
+    int mAlto;
+
+
+    int XCuad;
+    int YCuad;
+    int LadoCuad;
+
+
     bool borradorEnabled;
 
 

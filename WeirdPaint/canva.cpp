@@ -20,11 +20,88 @@ void Canva::cambiarGrosor(int grosorSeleccionado)
     grosor = grosorSeleccionado;
 }
 
+<<<<<<< Updated upstream
 void Canva::cambiarEstadoColorPicker()
 {
     colorPickerActivado = true;
 }
 
+=======
+
+
+void Canva::cambiarCoorX(int CoorXSeleccionado)
+{
+    CoordenadaX = CoorXSeleccionado;
+}
+
+
+
+void Canva::cambiarCoorY(int CoorYSeleccionado)
+{
+    CoordenadaY = CoorYSeleccionado;
+}
+
+
+void Canva::cambiarRadioX(int RadioXSeleccionado)
+{
+   RadioX = RadioXSeleccionado;
+}
+
+
+void Canva::cambiarRadioY(int RadioYSeleccionado)
+{
+    RadioY = RadioYSeleccionado;
+}
+
+
+
+void Canva::cambiarAncho(int AnchoSeleccionado)
+{
+  Ancho = AnchoSeleccionado;
+}
+
+
+void Canva::cambiarAlto(int AlturaSeleccionado)
+{
+    Altura = AlturaSeleccionado;
+}
+
+
+
+void Canva::cambiarX(int XSeleccionado)
+{
+  X = XSeleccionado;
+}
+
+
+void Canva::cambiarY(int YSeleccionado)
+{
+    Y = YSeleccionado;
+}
+
+
+
+
+void Canva::cambiarPosX(int PosXSeleccionado)
+{
+    XP = PosXSeleccionado;
+}
+
+
+void Canva::cambiarPosY(int PosYSeleccionado)
+{
+    YP = PosYSeleccionado;
+}
+
+
+void Canva::cambiarLado(int LadoCuad)
+{
+    LadoP = LadoCuad;
+}
+
+
+
+>>>>>>> Stashed changes
 void Canva::cambiarEstadoBorrador(std::string clave)
 {
     if(clave == "lapiz"){
@@ -103,8 +180,6 @@ void Canva::paintEvent(QPaintEvent *event)
 
 
 
-
-
 }
 
 void Canva::resizeEvent(QResizeEvent *event)
@@ -118,6 +193,7 @@ void Canva::resizeEvent(QResizeEvent *event)
     QWidget::resizeEvent(event);
 }
 
+
 void Canva::dibujarFiguras(const QPoint &endPoint)
 {
     QPainter painter(&image);
@@ -129,21 +205,39 @@ void Canva::dibujarFiguras(const QPoint &endPoint)
          painter.drawLine(Final,Inicio);
         }
 
-    if (rectangulo)
+    if (circulo)
 
     {
-         painter.drawEllipse(76,27,20,20);
-         painter.setPen(QPen(color, grosor, Qt::SolidLine, Qt::RoundCap,
+        painter.setPen(QPen(color, grosor, Qt::SolidLine, Qt::RoundCap,
                              Qt::RoundJoin));
+         painter.drawEllipse(CoordenadaX,CoordenadaY,RadioX,RadioY);
+         }
+
+    if(rectangulo)
+    {
+
+        painter.setPen(QPen(color, grosor, Qt::SolidLine, Qt::RoundCap,
+                             Qt::RoundJoin));
+        painter.drawRect(X,Y,Ancho,Altura);
+    }
+
+    if(cuadrado)
+
+    {
+        painter.setPen(QPen(color, grosor, Qt::SolidLine, Qt::RoundCap,
+                             Qt::RoundJoin));
+        painter.drawRect(XP,YP,LadoP,LadoP);
     }
 
 
+
     if (borradorEnabled){
-        rectangulo = false;
+        //rectangulo = false;
 
         painter.setPen(QPen(Qt::white, grosor, Qt::SolidLine, Qt::RoundCap,
                             Qt::RoundJoin));
         }
+
 
     else{
         painter.setPen(QPen(color, grosor, Qt::SolidLine, Qt::RoundCap,
@@ -212,12 +306,19 @@ void Canva::lapiceroOf()
 }
 
 
+void Canva::Circulo()
+{
+    lapicero = false;
+    borradorEnabled = false;
+    circulo = true;
+}
 void Canva::Rectangulo()
 {
     lapicero = false;
     borradorEnabled = false;
     rectangulo = true;
 }
+<<<<<<< Updated upstream
 
 void Canva::filtroNegativo()
 {
@@ -294,4 +395,11 @@ void Canva::filtroAzul()
     }
     imagenActivada = true;
     update();
+=======
+void Canva::Cuadrado()
+{
+    lapicero = false;
+    borradorEnabled = false;
+    cuadrado = true;
+>>>>>>> Stashed changes
 }

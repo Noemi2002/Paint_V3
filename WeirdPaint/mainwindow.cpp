@@ -42,6 +42,15 @@ void MainWindow::on_actionGrosor_triggered()
     canvaVentana->cambiarGrosor(mgrosor);
 }
 
+/*void MainWindow::on_actionRect_ngulo_triggered()
+{
+
+
+
+}*/
+
+
+
 
 void MainWindow::on_actionColor_triggered()
 {
@@ -74,15 +83,7 @@ bool MainWindow::on_actionGuardar_Imagen_triggered()
 }
 
 
-void MainWindow::on_actionRect_ngulo_triggered()
-{
-    canvaVentana->Rectangulo();
-    //scene = new QGraphicsScene(this);
-    //ui->graphicsView->setScene(scene);
 
-    //Rectangulo square = new Rectangulo;
-    //scene->addItem(square);
-}
 
 
 void MainWindow::on_actionCargar_Imagen_triggered()
@@ -104,6 +105,7 @@ void MainWindow::on_actionLapicero_triggered()
 
 }
 
+<<<<<<< Updated upstream
 
 void MainWindow::on_actionColorPicker_triggered()
 {
@@ -140,3 +142,49 @@ void MainWindow::on_actionFiltro_triggered()
     canvaVentana->filtroAzul();
 }
 
+=======
+void MainWindow::on_actionCirculo_triggered()
+{
+    mCoorX = QInputDialog::getInt(this, "Coordenada_X", "Ingrese la posición en X: ", 0,0);
+    mCoorY = QInputDialog::getInt(this, "Coordenada_Y", "Ingrese la posición en Y: ", 0,0);
+    mradioX = QInputDialog::getInt(this, "radio_X", "Ingrese el radio en X: ", 0,0);
+    mradioY = QInputDialog::getInt(this, "radio_Y", "Ingrese el radio en Y: ", 0,0);
+
+    canvaVentana->cambiarCoorX(mCoorX);
+    canvaVentana->cambiarCoorY(mCoorY);
+    canvaVentana->cambiarRadioX(mradioX);
+    canvaVentana->cambiarRadioY(mradioY);
+
+    canvaVentana->Circulo();
+}
+
+void MainWindow::on_actionRectangulo_triggered()
+{
+    X = QInputDialog::getInt(this, "X", "Ingrese la posición en X: ", 0,0);
+    Y = QInputDialog::getInt(this, "Y", "Ingrese la posición en Y: ", 0,0);
+    mAncho = QInputDialog::getInt(this, "Ancho", "Ingrese el Altura: ", 0,0);
+    mAlto = QInputDialog::getInt(this, "Altura", "Ingrese el Ancho: ", 0,0);
+
+    canvaVentana->cambiarX(X);
+    canvaVentana->cambiarY(Y);
+    canvaVentana->cambiarAncho(mAncho);
+    canvaVentana->cambiarAlto(mAlto);
+
+    canvaVentana->Rectangulo();
+}
+
+void MainWindow::on_actionCuadrado_triggered()
+{
+
+    XCuad = QInputDialog::getInt(this, "X", "Ingrese la posición en X: ", 0,0);
+    YCuad = QInputDialog::getInt(this, "Y", "Ingrese la posición en Y: ", 0,0);
+    LadoCuad = QInputDialog::getInt(this, "Ancho", "Ingrese el Altura: ", 0,0);
+
+    canvaVentana->cambiarPosX(XCuad);
+    canvaVentana->cambiarPosY(YCuad);
+
+    canvaVentana->cambiarLado(LadoCuad);
+
+    canvaVentana->Cuadrado();
+}
+>>>>>>> Stashed changes

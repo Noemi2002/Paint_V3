@@ -23,16 +23,34 @@ public:
     void cambiarEstadoBorrador(std::string clave);
     bool guardarImagen(const QString &fileName, const char *fileFormat);
     void asignarColoresMatriz(QImage imagePath);
+    void cambiarCoorX(int CoorXSeleccionado);
+    void cambiarCoorY(int CoorYSeleccionado);
+    void cambiarRadioY(int RadioYSeleccionado);
+    void cambiarRadioX(int RadioXSeleccionado);
+    void cambiarAlto(int AltoSeleccionado);
+    void cambiarAncho(int AnchoSeleccionado);
+    void cambiarX(int XSeleccionado);
+    void cambiarY(int YSeleccionado);
+
+
+    void cambiarPosX(int XCuad);
+    void cambiarPosY(int YCuad);
+    void cambiarLado(int LadoCuad);
 
     void lapiceroOn();
      void lapiceroOf();
+    void Circulo();
     void Rectangulo();
+<<<<<<< Updated upstream
     void cambiarEstadoColorPicker();
     void filtroNegativo();
     void filtroBlancoNegro();
     void intercambioColores();
     void filtroCalido();
     void filtroAzul();
+=======
+    void Cuadrado();
+>>>>>>> Stashed changes
     //QImage mostrarImagen(QImage imagePath);
 
 protected:
@@ -55,14 +73,32 @@ private:
     QPoint Inicio;
     QPoint Final;
     int grosor = DEFAULT_SIZE;
+    int CoordenadaX;
+    int CoordenadaY;
+    int RadioX;
+    int RadioY;
+    int Ancho;
+    int Altura;
+    int X;
+    int Y;
+
+    int XP;
+    int YP;
+    int LadoP;
+
     QColor color = DEFAULT_COLOR;
     QImage image;
     QPoint puntoFinal;
     QImage direccion;
     bool lapicero;
+    bool circulo;
     bool rectangulo;
+<<<<<<< Updated upstream
     bool colorPickerActivado = false;
 
+=======
+    bool cuadrado;
+>>>>>>> Stashed changes
     QRgb coloresImagen[1000][1000];
 
 
