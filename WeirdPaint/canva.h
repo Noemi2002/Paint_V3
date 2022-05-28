@@ -31,6 +31,8 @@ public:
     void filtroNegativo();
     void filtroBlancoNegro();
     void intercambioColores();
+    void filtroCalido();
+    void filtroAzul();
     //QImage mostrarImagen(QImage imagePath);
 
 protected:

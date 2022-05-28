@@ -68,6 +68,8 @@
     <addaction name="actionBlanco_y_negro"/>
     <addaction name="actionNegativo"/>
     <addaction name="actionIntercambio_de_azul_y_rojo"/>
+    <addaction name="actionC_lido"/>
+    <addaction name="actionFiltro"/>
    </widget>
    <widget class="QMenu" name="menuUndo">
     <property name="title">
@@ -167,6 +169,16 @@
   <action name="actionIntercambio_de_azul_y_rojo">
    <property name="text">
     <string>Intercambio de azul y rojo</string>
+   </property>
+  </action>
+  <action name="actionC_lido">
+   <property name="text">
+    <string>Cálido</string>
+   </property>
+  </action>
+  <action name="actionFiltro">
+   <property name="text">
+    <string>Tonalidad azul</string>
    </property>
   </action>
  </widget>

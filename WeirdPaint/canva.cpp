@@ -236,17 +236,21 @@ void Canva::filtroNegativo()
 
 void Canva::filtroBlancoNegro()
 {
-    /*QImage nueva = direccion.invertPixels();
-    for (int i = 0; i < nueva.height(); i++)
+    for (int i = 0; i < direccion.width(); i++)
     {
-        for (int j = 0; j < nueva.height(); j++)
+        for (int j = 0; j < direccion.height(); j++)
         {
 
-            coloresImagen[i][j] = nueva.pixelColor(i, j);
+            QColor nueva =direccion.pixelColor(i, j);
+            int blue = nueva.blue();
+            int green = nueva.green();
+            int red = nueva.red();
+            int gris = (red + green + blue) / 3;
+            coloresImagen[i][j] = qRgb(gris, gris, gris);
         }
     }
     imagenActivada = true;
-    update();*/
+    update();
 }
 
 void Canva::intercambioColores()
@@ -258,6 +262,34 @@ void Canva::intercambioColores()
         {
 
             coloresImagen[i][j] = nueva.pixelColor(i, j).QColor::rgb();
+        }
+    }
+    imagenActivada = true;
+    update();
+}
+
+void Canva::filtroCalido()
+{
+    for (int i = 0; i < direccion.width(); i++)
+    {
+        for (int j = 0; j < direccion.height(); j++)
+        {
+            QRgb nuevoColor = 100 - coloresImagen[i][j];
+            coloresImagen[i][j] = nuevoColor;
+        }
+    }
+    imagenActivada = true;
+    update();
+}
+
+void Canva::filtroAzul()
+{
+    for (int i = 0; i < direccion.width(); i++)
+    {
+        for (int j = 0; j < direccion.height(); j++)
+        {
+            QRgb nuevoColor = 244 + coloresImagen[i][j];
+            coloresImagen[i][j] = nuevoColor;
         }
     }
     imagenActivada = true;

@@ -128,3 +128,15 @@ void MainWindow::on_actionBlanco_y_negro_triggered()
     canvaVentana->filtroBlancoNegro();
 }
 
+
+void MainWindow::on_actionC_lido_triggered()
+{
+    canvaVentana->filtroCalido();
+}
+
+
+void MainWindow::on_actionFiltro_triggered()
+{
+    canvaVentana->filtroAzul();
+}
+

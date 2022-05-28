@@ -40,6 +40,10 @@ private slots:
 
     void on_actionBlanco_y_negro_triggered();
 
+    void on_actionC_lido_triggered();
+
+    void on_actionFiltro_triggered();
+
 private:
     QPainter *mPainter;
     QImage *mImage;

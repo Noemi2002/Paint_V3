@@ -39,6 +39,8 @@ public:
     QAction *actionNegativo;
     QAction *actionNuevo;
     QAction *actionIntercambio_de_azul_y_rojo;
+    QAction *actionC_lido;
+    QAction *actionFiltro;
     QWidget *centralwidget;
     QMenuBar *menubar;
     QMenu *menuArchivo;
@@ -88,6 +90,10 @@ public:
         actionNuevo->setObjectName(QString::fromUtf8("actionNuevo"));
         actionIntercambio_de_azul_y_rojo = new QAction(MainWindow);
         actionIntercambio_de_azul_y_rojo->setObjectName(QString::fromUtf8("actionIntercambio_de_azul_y_rojo"));
+        actionC_lido = new QAction(MainWindow);
+        actionC_lido->setObjectName(QString::fromUtf8("actionC_lido"));
+        actionFiltro = new QAction(MainWindow);
+        actionFiltro->setObjectName(QString::fromUtf8("actionFiltro"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         MainWindow->setCentralWidget(centralwidget);
@@ -139,6 +145,8 @@ public:
         menuFiltros->addAction(actionBlanco_y_negro);
         menuFiltros->addAction(actionNegativo);
         menuFiltros->addAction(actionIntercambio_de_azul_y_rojo);
+        menuFiltros->addAction(actionC_lido);
+        menuFiltros->addAction(actionFiltro);
 
         retranslateUi(MainWindow);
 
@@ -164,6 +172,8 @@ public:
         actionNegativo->setText(QApplication::translate("MainWindow", "Negativo", nullptr));
         actionNuevo->setText(QApplication::translate("MainWindow", "Nuevo", nullptr));
         actionIntercambio_de_azul_y_rojo->setText(QApplication::translate("MainWindow", "Intercambio de azul y rojo", nullptr));
+        actionC_lido->setText(QApplication::translate("MainWindow", "C\303\241lido", nullptr));
+        actionFiltro->setText(QApplication::translate("MainWindow", "Tonalidad azul", nullptr));
         menuArchivo->setTitle(QApplication::translate("MainWindow", "Archivo", nullptr));
         menuCartuchera->setTitle(QApplication::translate("MainWindow", "Cartuchera", nullptr));
         menuCaracter_sticas->setTitle(QApplication::translate("MainWindow", "Caracter\303\255sticas", nullptr));
